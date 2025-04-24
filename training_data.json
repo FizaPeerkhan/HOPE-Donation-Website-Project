@@ -1,0 +1,58 @@
+{
+    "intents": [
+        {
+            "tag": "donation_amount",
+            "patterns": [
+                "How much should I donate?",
+                "What's the minimum amount I can give?",
+                "Is there a fixed donation amount?",
+                "How much is required to donate?",
+                "Can I donate any amount?",
+                "What is the least amount I can donate?"
+            ],
+            "responses": [
+                "You can donate any amount that fits your budget! Most organizations accept donations starting from \u20b9100 ($1.25), but it varies by NGO."
+            ]
+        },
+        {
+            "tag": "donation_security",
+            "patterns": [
+                "Is my payment safe?",
+                "How secure is my donation?",
+                "Are my card details protected?",
+                "Is this website trusted for donations?",
+                "What security measures do you have?",
+                "Will my transaction be encrypted?"
+            ],
+            "responses": [
+                "Absolutely! \ud83d\ude0a All donations are processed through **secure, encrypted payment gateways** to ensure safety. Your card details are never stored, and we comply with **global security standards (PCI-DSS).**"
+            ]
+        },
+        {
+            "tag": "donation_transparency",
+            "patterns": [
+                "Where does my money go?",
+                "How do I know my donation is used properly?",
+                "Can I track how my donation is spent?",
+                "Do you provide reports on donations?",
+                "Is there any proof of donation usage?",
+                "How transparent is the donation process?"
+            ],
+            "responses": [
+                "Great question! We ensure **100% transparency** by providing **impact reports and donation receipts.** You can track where your funds go and see the difference you make!"
+            ]
+        },
+        {
+            "tag": "fallback",
+            "patterns": [
+                "random_text",
+                "unrecognized input"
+            ],
+            "responses": [
+                "I'm not sure I understand. Could you rephrase or ask in a different way?",
+                "I didn\u2019t quite get that. Can you try asking in another way?",
+                "Hmm, I\u2019m not sure about that. Would you like help with something else?"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Donation - Hope</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Professional Donate Button Styles */
+        .donate-button {
+            background-color: #54bd95;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .donate-button:hover {
+            background-color: #3a8f6d;
+        }
+
+        .donate-button:active {
+            background-color: #3d8b40;
+        }
+
+        .ngo-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .ngo-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .ngo-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .ngo-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .ngo-cause {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="landing-page">
+            <nav class="nav-wrapper">
+                <div class="nav-items">
+                    <div class="logo">HOPE</div>
+                    <div class="nav-links">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="#" class="nav-link">Forum</a>
+                        <a href="#" class="nav-link">Contact us</a>
+                    </div>
+                    <div class="auth-buttons">
+                        <a href="register.html" class="auth-button register">Register</a>
+                        <a href="login.html" class="auth-button login">Login</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- NGO List Section -->
+        <section class="ngo-list-section">
+            <div class="ngo-list-wrapper">
+                <h1 class="ngo-list-title">Support Food Security</h1>
+                <p class="ngo-list-description">
+                    Select a city to explore NGOs working to provide food to the underprivileged in your area. 
+                    Learn about their causes, initiatives, and how you can support them.
+                </p>
+
+                <!-- City Selection Dropdown -->
+                <div class="city-selection">
+                    <label for="city-select" class="city-label">Select a City:</label>
+                    <select id="city-select" class="city-select" onchange="filterNGOs()">
+                        <option value="all">All Cities</option>
+                        <option value="mumbai">Mumbai</option>
+                        <option value="hyderabad">Hyderabad</option>
+                        <option value="kolkata">Kolkata</option>
+                        <option value="delhi">Delhi</option>
+                        <option value="ahmedabad">Ahmedabad</option>
+                    </select>
+                </div>
+
+                <!-- NGO Cards -->
+                <div class="ngo-cards" id="ngo-cards">
+                    <!-- Mumbai NGOs -->
+                    <div class="ngo-card" data-city="mumbai" data-cause="food">
+                        <img src="https://images.unsplash.com/photo-1463740839922-2d3b7e426a56?q=80&w=1850&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Robin Hood Army" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Robin Hood Army</h3>
+                            <p class="ngo-cause">A volunteer-based organization that collects surplus food from restaurants and distributes it to the underprivileged.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Robin Hood Army')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="food">
+                        <img src="https://images.unsplash.com/photo-1593113616828-6f22bca04804?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Annamrita ISKCON Food Relief Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Annamrita ISKCON Food Relief Foundation</h3>
+                            <p class="ngo-cause">Provides nutritious midday meals to school children under the governments Midday Meal Scheme, aiming to improve nutrition and literacy.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Annamrita ISKCON Food Relief Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="food">
+                        <img src="https://plus.unsplash.com/premium_photo-1661962834814-2086d028cda1?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Seva Cafe" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Seva Cafe</h3>
+                            <p class="ngo-cause">Operates on a pay-it-forward model, offering free meals in Mumbai, where patrons are invited to contribute for future guests.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Seva Cafe')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="food">
+                        <img src="https://images.unsplash.com/photo-1534483509719-3feaee7c30da?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Self Employed Womens Association SEWA" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Self Employed Womens Association SEWA</h3>
+                            <p class="ngo-cause">Provides food security programs, including food grain distribution and childcare centers that offer meals, especially during natural disasters.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Self Employed Womens Association SEWA')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="food">
+                        <img src="https://plus.unsplash.com/premium_photo-1663126472261-6e58ab83bfea?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pratham Mumbai Education Initiative" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Pratham Mumbai Education Initiative</h3>
+                            <p class="ngo-cause">While primarily focused on education, Pratham also addresses nutrition by providing meals to children in its educational programs.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Pratham Mumbai Education Initiative')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="food">
+                        <img src="https://images.unsplash.com/photo-1615897570493-84cdd8a9853b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Aas Charitable Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Aas Charitable Foundation</h3>
+                            <p class="ngo-cause">Engages in various charitable activities, including providing food and healthcare services to underprivileged communities in Mumbai.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Aas Charitable Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Hyderabad NGOs -->
+                    <div class="ngo-card" data-city="hyderabad" data-cause="food">
+                        <img src="https://images.unsplash.com/photo-1486887396153-fa416526c108?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Deccan Development Society DDS" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Deccan Development Society DDS</h3>
+                            <p class="ngo-cause">An agri-based NGO working on crop improvement programs and supporting local farmers, with a focus on food security and sustainable agriculture.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Deccan Development Society DDS')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="food">
+                        <img src="https://plus.unsplash.com/premium_photo-1663045467897-6ff808fb7bac?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Robin Hood Army" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Robin Hood Army</h3>
+                            <p class="ngo-cause">Operates in Hyderabad, collecting surplus food from restaurants and distributing it to those in need.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Robin Hood Army')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="food">
+                        <img src="https://images.unsplash.com/photo-1461354464878-ad92f492a5a0?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Delhi Food Banking Network" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Delhi Food Banking Network</h3>
+                            <p class="ngo-cause">While based in Delhi, it has expanded its operations to Hyderabad, matching food donors with those in need.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Delhi Food Banking Network')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="food">
+                        <img src="https://plus.unsplash.com/premium_photo-1683140538884-07fb31428ca6?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Surabhi Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Surabhi Foundation</h3>
+                            <p class="ngo-cause">Dedicated to improving the socio-economic conditions of farmers and artisans, with initiatives supporting food security and nutrition.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Surabhi Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="food">
+                        <img src="https://images.unsplash.com/photo-1423483641154-5411ec9c0ddf?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Akshaya Patra Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Akshaya Patra Foundation</h3>
+                            <p class="ngo-cause">Provides mid-day meals to school children, aiming to eliminate classroom hunger and promote education.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Akshaya Patra Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="food">
+                        <img src="https://plus.unsplash.com/premium_photo-1663040178972-ee1d45d33899?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Hunger Has No Religion" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Hunger Has No Religion</h3>
+                            <p class="ngo-cause">A volunteer-driven organization that distributes free meals to the underprivileged in Hyderabad.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Hunger Has No Religion')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Kolkata NGOs -->
+                    <div class="ngo-card" data-city="kolkata" data-cause="food">
+                        <img src="https://images.unsplash.com/photo-1599059813005-11265ba4b4ce?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Robin Hood Army" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Robin Hood Army</h3>
+                            <p class="ngo-cause">Active in Kolkata, this volunteer-based organization distributes surplus food to the underprivileged.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Robin Hood Army')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="food">
+                        <img src="https://images.unsplash.com/photo-1615897570582-285ffe259530?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Annamrita ISKCON Food Relief Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Annamrita ISKCON Food Relief Foundation</h3>
+                            <p class="ngo-cause">Provides midday meals to school children in Kolkata under the governments Midday Meal Scheme.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Annamrita ISKCON Food Relief Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="food">
+                        <img src="https://images.unsplash.com/photo-1586105040423-92f81a64033f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Seva Cafe" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Seva Cafe</h3>
+                            <p class="ngo-cause">Operates on a pay-it-forward model, offering free meals in Kolkata, where patrons can contribute for future guests.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Seva Cafe')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="food">
+                        <img src="https://images.unsplash.com/photo-1485821836693-0372f14be9c6?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Calcutta Rescue" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Calcutta Rescue</h3>
+                            <p class="ngo-cause">Provides free medical care and education to the underprivileged, including nutritional support.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Calcutta Rescue')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="food">
+                        <img src="https://images.unsplash.com/photo-1476837579993-f1d3948f17c2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Hope Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Hope Foundation</h3>
+                            <p class="ngo-cause">Offers food, shelter, and education to street children and marginalized communities in Kolkata.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Hope Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="food">
+                        <img src="https://images.unsplash.com/photo-1694286068611-d0c24cbc2cd5?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Mother Teresa Missionaries of Charity" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Mother Teresa Missionaries of Charity</h3>
+                            <p class="ngo-cause">Provides food and care to the destitute and dying, following the legacy of Mother Teresa.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Mother Teresa Missionaries of Charity')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Delhi NGOs -->
+                    <div class="ngo-card" data-city="delhi" data-cause="food">
+                        <img src="https://plus.unsplash.com/premium_photo-1663047044538-399e70f24ae0?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Delhi Food Banking Network" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Delhi Food Banking Network</h3>
+                            <p class="ngo-cause">Operates a food bank system matching food donors with those in need, serving various populations in Delhi.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Delhi Food Banking Network')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="food">
+                        <img src="https://plus.unsplash.com/premium_photo-1681492244799-f559a49e767f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Robin Hood Army" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Robin Hood Army</h3>
+                            <p class="ngo-cause">Active in Delhi, this organization collects surplus food from restaurants and distributes it to the underprivileged.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Robin Hood Army')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="food">
+                        <img src="https://images.unsplash.com/photo-1598515213381-80d77efcdf32?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Self Employed Womens Association SEWA" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Self Employed Womens Association SEWA</h3>
+                            <p class="ngo-cause">Provides food security programs, including food grain distribution and childcare centers offering meals, especially during natural disasters.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Self Employed Womens Association SEWA')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="food">
+                        <img src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?q=80&w=1760&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Goonj" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Goonj</h3>
+                            <p class="ngo-cause">An NGO addressing basic needs like food, shelter, and clothing for marginalized communities, with a focus on urban-rural divide.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Goonj')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="food">
+                        <img src="https://plus.unsplash.com/premium_photo-1683141173692-aba4763bce41?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Uday Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Uday Foundation</h3>
+                            <p class="ngo-cause">Provides food, medical assistance, and education to underprivileged children and families.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Uday Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Ahmedabad NGOs -->
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="food">
+                        <img src="https://images.unsplash.com/photo-1479150928156-423a69d91fe0?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Seva Cafe" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Seva Cafe</h3>
+                            <p class="ngo-cause">Operates on a pay-it-forward model, offering free meals in Ahmedabad, where patrons are invited to contribute for future guests.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Seva Cafe')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="food">
+                        <img src="https://plus.unsplash.com/premium_photo-1683134050449-080429c850a4?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Annamrita ISKCON Food Relief Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Annamrita ISKCON Food Relief Foundation</h3>
+                            <p class="ngo-cause">Provides nutritious midday meals to school children under the governments Midday Meal Scheme in Ahmedabad.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Annamrita ISKCON Food Relief Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="food">
+                        <img src="https://images.unsplash.com/photo-1596990803625-12e67163e8b2?q=80&w=1746&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Self Employed Womens Association SEWA" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Self Employed Womens Association SEWA</h3>
+                            <p class="ngo-cause">Offers food security programs, including food grain distribution and childcare centers providing meals, especially during natural disasters.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Self Employed Womens Association SEWA')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="food">
+                        <img src="https://images.unsplash.com/photo-1551117425-5e0f451ca10e?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Robin Hood Army" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Robin Hood Army</h3>
+                            <p class="ngo-cause">Active in Ahmedabad, this volunteer-based organization collects surplus food from restaurants and distributes it to the underprivileged.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Robin Hood Army')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="food">
+                        <img src="https://images.unsplash.com/photo-1576659407880-c06b00009853?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Aas Charitable Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Aas Charitable Foundation</h3>
+                            <p class="ngo-cause">Engages in various charitable activities, including providing food and healthcare services to underprivileged communities in Ahmedabad.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Aas Charitable Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="food">
+                        <img src="https://images.unsplash.com/photo-1627935603831-b9dff54668fc?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Anand Niketan" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Anand Niketan</h3>
+                            <p class="ngo-cause">Provides food, shelter, and education to orphaned and abandoned children in Ahmedabad.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Anand Niketan')">Donate Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-section">
+        <div class="footer-content">
+            <div class="footer-column-1">
+                <div class="footer-wrapper-1">
+                    <h3 class="footer-menu-title">Menu</h3>
+                    <nav class="footer-menu-links">
+                        <a href="#">About</a><br>
+                        <a href="#">Causes</a><br>
+                        <a href="#">Services</a><br>
+                        <a href="#">Events</a>
+                    </nav>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div class="footer-logo">
+                        <span>Hope</span>
+                        <div class="footer-logo-dot"></div>
+                    </div>
+                    <p class="footer-copyright">© 2025 Hope Inc. Copyright and rights reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter NGOs based on city selection and cause
+        function filterNGOs() {
+            const city = document.getElementById('city-select').value;
+            const ngoCards = document.querySelectorAll('.ngo-card');
+
+            ngoCards.forEach(card => {
+                const cardCity = card.getAttribute('data-city');
+                const cardCause = card.getAttribute('data-cause');
+
+                if ((city === 'all' || cardCity === city) && cardCause === 'food') {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Redirect to donation page with selected NGO
+        function redirectToDonation(ngoName) {
+            localStorage.setItem('selectedNGO', ngoName);
+            window.location.href = 'donation.html';
+        }
+
+        // Initial filter on page load
+        filterNGOs();
+    </script>
+</body>
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Needs Donation - Hope</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Professional Donate Button Styles */
+        .donate-button {
+            background-color: #54bd95;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .donate-button:hover {
+            background-color: #3a8f6d;
+        }
+
+        .donate-button:active {
+            background-color: #3d8b40;
+        }
+
+        .ngo-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .ngo-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .ngo-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .ngo-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .ngo-cause {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="landing-page">
+            <nav class="nav-wrapper">
+                <div class="nav-items">
+                    <div class="logo">HOPE</div>
+                    <div class="nav-links">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="#" class="nav-link">Forum</a>
+                        <a href="#" class="nav-link">Contact us</a>
+                    </div>
+                    <div class="auth-buttons">
+                        <a href="register.html" class="auth-button register">Register</a>
+                        <a href="login.html" class="auth-button login">Login</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- NGO List Section -->
+        <section class="ngo-list-section">
+            <div class="ngo-list-wrapper">
+                <h1 class="ngo-list-title">Support Medical Needs</h1>
+                <p class="ngo-list-description">
+                    Select a city to explore NGOs working for medical needs in your area. 
+                    Learn about their causes, initiatives, and how you can support them.
+                </p>
+
+                <!-- City Selection Dropdown -->
+                <div class="city-selection">
+                    <label for="city-select" class="city-label">Select a City:</label>
+                    <select id="city-select" class="city-select" onchange="filterNGOs()">
+                        <option value="all">All Cities</option>
+                        <option value="mumbai">Mumbai</option>
+                        <option value="delhi">Delhi</option>
+                        <option value="kolkata">Kolkata</option>
+                        <option value="ahmedabad">Ahmedabad</option>
+                        <option value="hyderabad">Hyderabad</option>
+                    </select>
+                </div>
+
+                <!-- NGO Cards -->
+                <div class="ngo-cards" id="ngo-cards">
+                    <!-- Mumbai NGOs -->
+                    <div class="ngo-card" data-city="mumbai" data-cause="medical-needs">
+                        <img src="https://images.unsplash.com/photo-1530497610245-94d3c16cda28?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Tata Memorial Centre" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Tata Memorial Centre</h3>
+                            <p class="ngo-cause">Providing cancer treatment, research, and education, the Tata Memorial Centre offers medical services, financial assistance, and support to cancer patients.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Tata Memorial Centre')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="medical-needs">
+                        <img src="https://images.unsplash.com/photo-1542884841-9f546e727bca?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Doctors For You (DFY)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Doctors For You (DFY)</h3>
+                            <p class="ngo-cause">Offering medical care to underserved communities, especially in disaster-affected areas, providing emergency medical relief, and healthcare education.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Doctors For You (DFY)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="medical-needs">
+                        <img src="https://plus.unsplash.com/premium_photo-1671098088734-8b8532731aef?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Hans Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Hans Foundation</h3>
+                            <p class="ngo-cause">Providing medical and healthcare services to economically disadvantaged people through initiatives like hospitals, medical camps, and healthcare programs.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Hans Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="medical-needs">
+                        <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="HelpAge India" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">HelpAge India</h3>
+                            <p class="ngo-cause">Providing healthcare services to the elderly, including medical support, health camps, and promoting health awareness for senior citizens.</p>
+                            <button class="donate-button" onclick="redirectToDonation('HelpAge India')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="medical-needs">
+                        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Mumbai Cancer Welfare Society" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Mumbai Cancer Welfare Society</h3>
+                            <p class="ngo-cause">Providing medical care, financial assistance, and counseling for cancer patients, especially those from lower-income backgrounds.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Mumbai Cancer Welfare Society')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="medical-needs">
+                        <img src="https://images.unsplash.com/photo-1513224502586-d1e602410265?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pratham Health" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Pratham Health</h3>
+                            <p class="ngo-cause">Improving access to primary healthcare and maternal health services, especially in rural and underprivileged urban areas of Mumbai.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Pratham Health')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Delhi NGOs -->
+                    <div class="ngo-card" data-city="delhi" data-cause="medical-needs">
+                        <img src="https://plus.unsplash.com/premium_photo-1668487827017-836a5d3b1728?q=80&w=1712&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Indian Red Cross Society" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Indian Red Cross Society</h3>
+                            <p class="ngo-cause">Offering medical assistance in disaster situations, providing blood donation drives, and operating hospitals and clinics that serve the underprivileged.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Indian Red Cross Society')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="medical-needs">
+                        <img src="https://images.unsplash.com/photo-1564732005956-20420ebdab60?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Medecins Sans Frontieres (Doctors Without Borders)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Medecins Sans Frontieres (Doctors Without Borders)</h3>
+                            <p class="ngo-cause">Providing emergency medical aid in conflict zones, disaster areas, and underserved communities, focusing on diseases like TB, malaria, and HIV/AIDS.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Medecins Sans Frontieres (Doctors Without Borders)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="medical-needs">
+                        <img src="https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?q=80&w=1937&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Smile Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Smile Foundation</h3>
+                            <p class="ngo-cause">Providing healthcare to underserved populations, including medical camps, health education, and treating chronic diseases in rural and urban areas.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Smile Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="medical-needs">
+                        <img src="https://images.unsplash.com/photo-1576671081837-49000212a370?q=80&w=1698&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sightsavers India" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Sightsavers India</h3>
+                            <p class="ngo-cause">Providing eye care services, including surgeries, eye exams, and advocacy for people with visual impairments, ensuring accessible medical care for those in need.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Sightsavers India')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="medical-needs">
+                        <img src="https://images.unsplash.com/photo-1538333702852-c1b7a2a93001?q=80&w=1744&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cancer Patients Aid Association (CPAA)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Cancer Patients Aid Association (CPAA)</h3>
+                            <p class="ngo-cause">Offering financial assistance, medical care, and emotional support for cancer patients from marginalized communities, including awareness programs and support services.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Cancer Patients Aid Association (CPAA)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="medical-needs">
+                        <img src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Anandam" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Anandam</h3>
+                            <p class="ngo-cause">Offering medical support to children with severe disabilities, including speech therapy, physiotherapy, and healthcare assistance.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Anandam')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Kolkata NGOs -->
+                    <div class="ngo-card" data-city="kolkata" data-cause="medical-needs">
+                        <img src="https://plus.unsplash.com/premium_photo-1670981099586-55fc3921cfd4?q=80&w=1886&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bengal Cancer Trust" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Bengal Cancer Trust</h3>
+                            <p class="ngo-cause">Providing support and medical care for cancer patients, including chemotherapy, financial aid, and awareness campaigns.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Bengal Cancer Trust')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="medical-needs">
+                        <img src="https://plus.unsplash.com/premium_photo-1723525213032-72ef4b21bfea?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Calcutta Medical Research Institute (CMRI)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Calcutta Medical Research Institute (CMRI)</h3>
+                            <p class="ngo-cause">A medical institution offering comprehensive healthcare services, from diagnostics to surgery, and providing financial assistance for the underprivileged.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Calcutta Medical Research Institute (CMRI)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="medical-needs">
+                        <img src="https://images.unsplash.com/photo-1583830379747-195159d0de82?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Indian Cancer Society (Kolkata Branch)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Indian Cancer Society (Kolkata Branch)</h3>
+                            <p class="ngo-cause">Offering cancer treatment, support services, and spreading awareness about cancer prevention and care, especially for underserved communities.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Indian Cancer Society (Kolkata Branch)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="medical-needs">
+                        <img src="https://images.unsplash.com/photo-1486825586573-7131f7991bdd?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Prayas Health Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Prayas Health Foundation</h3>
+                            <p class="ngo-cause">Providing medical treatment and healthcare services to marginalized groups, including children, women, and the elderly, in Kolkata and surrounding areas.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Prayas Health Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="medical-needs">
+                        <img src="https://plus.unsplash.com/premium_photo-1666299797563-1d4283fa93a2?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="CINI (Child In Need Institute)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">CINI (Child In Need Institute)</h3>
+                            <p class="ngo-cause">Offering healthcare services for children, including immunization, malnutrition treatment, and general health programs for underprivileged families.</p>
+                            <button class="donate-button" onclick="redirectToDonation('CINI (Child In Need Institute)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="medical-needs">
+                        <img src="https://images.unsplash.com/photo-1599556147783-7edf67c327e0?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sampurna Arogya Seva" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Sampurna Arogya Seva</h3>
+                            <p class="ngo-cause">Providing healthcare services for underprivileged communities, including medical camps, treatment for chronic diseases, and maternal healthcare services.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Sampurna Arogya Seva')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Ahmedabad NGOs -->
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="medical-needs">
+                        <img src="https://plus.unsplash.com/premium_photo-1673354481026-3ea87017152f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Shree Krishna Charitable Trust" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Shree Krishna Charitable Trust</h3>
+                            <p class="ngo-cause">Offering medical care, including free health camps, emergency medical assistance, and support for low-income families in Ahmedabad.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Shree Krishna Charitable Trust')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="medical-needs">
+                        <img src="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Prayas Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Prayas Foundation</h3>
+                            <p class="ngo-cause">Providing free medical care and healthcare services for children and families in need, including medical camps, surgeries, and mental health support.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Prayas Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="medical-needs">
+                        <img src="https://plus.unsplash.com/premium_photo-1675807264533-5e6db71ba3c4?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Vatsalya Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Vatsalya Foundation</h3>
+                            <p class="ngo-cause">Offering healthcare services, including medical checkups, surgeries, and mental health support for vulnerable populations, especially children and women.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Vatsalya Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="medical-needs">
+                        <img src="https://plus.unsplash.com/premium_photo-1668487826975-2e77361e0063?q=80&w=1712&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Mann Vasant Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Mann Vasant Foundation</h3>
+                            <p class="ngo-cause">Addressing medical needs of underprivileged communities through initiatives such as health camps, surgeries, and healthcare awareness campaigns.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Mann Vasant Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="medical-needs">
+                        <img src="https://plus.unsplash.com/premium_photo-1668487826666-baa00865bc13?q=80&w=1712&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="HelpAge India" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">HelpAge India</h3>
+                            <p class="ngo-cause">Providing medical care and health checkups for the elderly, including free medical camps, health education, and financial aid for senior citizens.</p>
+                            <button class="donate-button" onclick="redirectToDonation('HelpAge India')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="medical-needs">
+                        <img src="https://images.unsplash.com/photo-1611764461465-09162da6465a?q=80&w=1760&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sankalp Charitable Trust" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Sankalp Charitable Trust</h3>
+                            <p class="ngo-cause">Providing health services for underprivileged children and adults, including eye care, vaccination programs, and general medical treatments.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Sankalp Charitable Trust')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Hyderabad NGOs -->
+                    <div class="ngo-card" data-city="hyderabad" data-cause="medical-needs">
+                        <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Care Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Care Foundation</h3>
+                            <p class="ngo-cause">Providing health care, including emergency medical relief, medical camps, and healthcare support for rural and marginalized communities.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Care Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="medical-needs">
+                        <img src="https://plus.unsplash.com/premium_photo-1676325102742-34f68bea1656?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="KIMS Foundation and Research Centre" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">KIMS Foundation and Research Centre</h3>
+                            <p class="ngo-cause">Providing medical treatment, research, and support services, focusing on healthcare accessibility and improving medical infrastructure for underserved populations.</p>
+                            <button class="donate-button" onclick="redirectToDonation('KIMS Foundation and Research Centre')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="medical-needs">
+                        <img src="https://plus.unsplash.com/premium_photo-1671580131865-80069db0afe0?q=80&w=1907&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sankalp Rehabilitation Trust" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Sankalp Rehabilitation Trust</h3>
+                            <p class="ngo-cause">Providing free medical treatment and rehabilitation for people living with HIV/AIDS, offering medical care, counseling, and support services.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Sankalp Rehabilitation Trust')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="medical-needs">
+                        <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Elder Care India" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Elder Care India</h3>
+                            <p class="ngo-cause">Offering healthcare services for the elderly, including home healthcare, physiotherapy, and mental health support for senior citizens living alone.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Elder Care India')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="medical-needs">
+                        <img src="https://images.unsplash.com/photo-1516575901726-efcb7a9895a0?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Hyderabad Medical Relief and Welfare Trust (HMRWT)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Hyderabad Medical Relief and Welfare Trust (HMRWT)</h3>
+                            <p class="ngo-cause">Offering medical assistance, organizing medical camps, and providing essential healthcare services to underprivileged individuals in Hyderabad.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Hyderabad Medical Relief and Welfare Trust (HMRWT)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="medical-needs">
+                        <img src="https://plus.unsplash.com/premium_photo-1668487827039-ec0bedd0eb85?q=80&w=1712&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Anvaya Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Anvaya Foundation</h3>
+                            <p class="ngo-cause">Supporting healthcare for children with autism and other disabilities, providing medical care, therapy, and educational support.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Anvaya Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-section">
+        <div class="footer-content">
+            <div class="footer-column-1">
+                <div class="footer-wrapper-1">
+                    <h3 class="footer-menu-title">Menu</h3>
+                    <nav class="footer-menu-links">
+                        <a href="#">About</a><br>
+                        <a href="#">Causes</a><br>
+                        <a href="#">Services</a><br>
+                        <a href="#">Events</a>
+                    </nav>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div class="footer-logo">
+                        <span>Hope</span>
+                        <div class="footer-logo-dot"></div>
+                    </div>
+                    <p class="footer-copyright">© 2025 Hope Inc. Copyright and rights reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter NGOs based on city selection and cause
+        function filterNGOs() {
+            const city = document.getElementById('city-select').value;
+            const ngoCards = document.querySelectorAll('.ngo-card');
+
+            ngoCards.forEach(card => {
+                const cardCity = card.getAttribute('data-city');
+                const cardCause = card.getAttribute('data-cause');
+
+                if ((city === 'all' || cardCity === city) && cardCause === 'medical-needs') {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Redirect to donation page with selected NGO
+        function redirectToDonation(ngoName) {
+            localStorage.setItem('selectedNGO', ngoName);
+            window.location.href = 'donation.html';
+        }
+
+        // Initial filter on page load
+        filterNGOs();
+    </script>
+</body>
+</html>

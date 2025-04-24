@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urgent Needs - Hope</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            background-color: #f5faf8;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Main Content */
+        .needs-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-title span {
+            color: #54bd95;
+        }
+
+        .page-subtitle {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .filter-select {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .filter-select:focus {
+            border-color: #54bd95;
+            box-shadow: 0 0 0 2px rgba(84, 189, 149, 0.2);
+            outline: none;
+        }
+
+        .refresh-btn {
+            background-color: #54bd95;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 14px;
+        }
+
+        .refresh-btn:hover {
+            background-color: #3a8f6d;
+        }
+
+        /* Needs Grid */
+        .needs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .need-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .need-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .need-card.Urgent {
+            border-top: 4px solid #e74c3c;
+        }
+
+        .need-card.High {
+            border-top: 4px solid #f18f01;
+        }
+
+        .need-card.Medium {
+            border-top: 4px solid #54bd95;
+        }
+
+        .need-card.Low {
+            border-top: 4px solid #3498db;
+        }
+
+        .need-content {
+            padding: 1.5rem;
+        }
+
+        .need-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .need-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .need-priority {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .priority-Urgent {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .priority-High {
+            background-color: #f18f01;
+            color: white;
+        }
+
+        .priority-Medium {
+            background-color: #54bd95;
+            color: white;
+        }
+
+        .priority-Low {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .need-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .need-ngo {
+            font-weight: 600;
+            color: #54bd95;
+        }
+
+        .need-location {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .need-description {
+            margin-bottom: 1.5rem;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .quantity-needed {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 14px;
+        }
+
+        .need-footer {
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+            margin-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .need-posted {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .donate-btn {
+            background-color: #54bd95;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 14px;
+        }
+
+        .donate-btn:hover {
+            background-color: #3a8f6d;
+        }
+
+        /* No Needs Message */
+        .no-needs {
+            text-align: center;
+            padding: 4rem 2rem;
+            grid-column: 1 / -1;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        .no-needs-icon {
+            font-size: 3rem;
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .no-needs-message {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .nav-items {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .auth-buttons {
+                margin-top: 1rem;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-group {
+                flex-wrap: wrap;
+            }
+
+            .refresh-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-wrapper">
+            <div class="nav-items">
+                <div class="logo">HOPE</div>
+                <div class="nav-links">
+                    <a href="indexnew.html" class="nav-link">Home</a>
+                    <a href="urgent-needs.html" class="nav-link active">Urgent Needs</a>
+                    <a href="#" class="nav-link">Contact us</a>
+                </div>
+                <div class="auth-buttons">
+                    <a href="index.html" class="auth-button login">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="needs-container">
+            <div class="page-header">
+                <h1 class="page-title">Urgent <span>Needs</span></h1>
+                <p class="page-subtitle">Browse current requests from NGOs and find opportunities to make a difference today.</p>
+            </div>
+            
+            <div class="controls">
+                <div class="filter-group">
+                    <span class="filter-label">Filter by:</span>
+                    <select class="filter-select" id="categoryFilter">
+                        <option value="">All Categories</option>
+                        <option value="Education">Education</option>
+                        <option value="Children">Children</option>
+                        <option value="Food">Food Security</option>
+                        <option value="Women">Women's Rights</option>
+                        <option value="Disaster Relief">Disaster Relief</option>
+                        <option value="Specially Abled">Disability Support</option>
+                        <option value="Elderly">Elderly Care</option>
+                        <option value="Medical Needs">Medical Assistance</option>
+                        <option value="Animals">Animal Welfare</option>
+                    </select>
+                    
+                    <select class="filter-select" id="urgencyFilter">
+                        <option value="">All Urgency Levels</option>
+                        <option value="Urgent">Urgent</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+                
+                <button class="refresh-btn" id="refreshBtn">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+            </div>
+            
+            <div class="needs-grid" id="needsGrid">
+                <!-- Needs will be dynamically inserted here -->
+                <div class="no-needs" id="noNeedsMessage">
+                    <div class="no-needs-icon">
+                        <i class="fas fa-inbox"></i>
+                    </div>
+                    <h3 class="no-needs-message">No urgent needs found</h3>
+                    <p>Check back later or consider registering your NGO to post needs.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-section">
+        <div class="footer-content">
+            <div class="footer-column-1">
+                <div class="footer-wrapper-1">
+                    <h3 class="footer-menu-title">Menu</h3>
+                    <nav class="footer-menu-links">
+                        About<br>
+                        Causes<br>
+                        Services<br>
+                        Events
+                    </nav>
+                    <div class="social-icons">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f328ca805879574c401999cb42f44c670a3006ed52e7a50af8543c923023ac60?placeholderIfAbsent=true&apiKey=96cef265759849c4ad3bb1dc4b9cb445" alt="Social icon 1" class="social-icon" loading="lazy">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/825f4830acef626439aab45e8ad05c578bd70e7e2082a839b4aeeedd02f16568?placeholderIfAbsent=true&apiKey=96cef265759849c4ad3bb1dc4b9cb445" alt="Social icon 2" class="social-icon" loading="lazy">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/888ffa44548d076780e899a9f2fcd5f92ee3e3c2c1357730afbed098b16fd322?placeholderIfAbsent=true&apiKey=96cef265759849c4ad3bb1dc4b9cb445" alt="Social icon 3" class="social-icon" loading="lazy">
+                    </div>
+                    <div class="footer-logo">
+                        <span>Hope</span>
+                        <div class="footer-logo-dot"></div>
+                    </div>
+                    <p class="footer-copyright">© 2025 Hope Inc. Copyright and rights reserved</p>
+                </div>
+            </div>
+            <div class="footer-column-2">
+                <div class="footer-wrapper-2">
+                    <form class="contact-form">
+                        <h3 class="form-title">Have A Question</h3>
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" aria-label="Enter your email">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" name="message" class="form-textarea" placeholder="What are you saying?" aria-label="What are you saying?"></textarea>
+                        <button type="submit" class="form-submit">Send Question</button>
+                    </form>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Terms and Conditions</a>
+                        <a href="#" class="footer-link">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const needsGrid = document.getElementById('needsGrid');
+        const noNeedsMessage = document.getElementById('noNeedsMessage');
+        const refreshBtn = document.getElementById('refreshBtn');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const urgencyFilter = document.getElementById('urgencyFilter');
+        
+        // Display needs function
+        function displayNeeds() {
+            // Get needs from localStorage
+            const urgentNeeds = JSON.parse(localStorage.getItem('urgentNeeds')) || [];
+            
+            // Get filter values
+            const categoryValue = categoryFilter.value;
+            const urgencyValue = urgencyFilter.value;
+            
+            // Filter needs
+            const filteredNeeds = urgentNeeds.filter(need => {
+                const categoryMatch = !categoryValue || need.category === categoryValue;
+                const urgencyMatch = !urgencyValue || need.priority === urgencyValue;
+                return categoryMatch && urgencyMatch;
+            });
+            
+            // Clear current display
+            needsGrid.innerHTML = '';
+            
+            if (filteredNeeds.length === 0) {
+                noNeedsMessage.style.display = 'block';
+                needsGrid.appendChild(noNeedsMessage);
+                return;
+            }
+            
+            noNeedsMessage.style.display = 'none';
+            
+            // Display each need
+            filteredNeeds.forEach(need => {
+                const priorityClass = `priority-${need.priority}`;
+                const cardClass = `need-card ${need.priority}`;
+                
+                const needElement = document.createElement('div');
+                needElement.className = cardClass;
+                needElement.innerHTML = `
+                    <div class="need-content">
+                        <div class="need-header">
+                            <h3 class="need-title">${need.title}</h3>
+                            <span class="need-priority ${priorityClass}">${need.priority}</span>
+                        </div>
+                        
+                        <div class="need-meta">
+                            <span class="need-ngo">${need.ngo}</span>
+                            <span class="need-location">
+                                <i class="fas fa-map-marker-alt"></i> ${need.location}
+                            </span>
+                        </div>
+                        
+                        <div class="need-description">
+                            <p>${need.description}</p>
+                        </div>
+                        
+                        <div class="quantity-needed">
+                            <i class="fas fa-cubes"></i> Quantity Needed: ${need.quantity}
+                        </div>
+                        
+                        <div class="need-footer">
+                            <span class="need-posted">
+                                <i class="far fa-clock"></i> Posted: ${need.posted}
+                            </span>
+                            
+                            <button class="donate-btn" onclick="handleDonate('${need.id}')">
+                                <i class="fas fa-hand-holding-heart"></i> Donate
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                needsGrid.appendChild(needElement);
+            });
+        }
+        
+        // Handle donate button click
+        function handleDonate(needId) {
+            const urgentNeeds = JSON.parse(localStorage.getItem('urgentNeeds')) || [];
+            const selectedNeed = urgentNeeds.find(need => need.id == needId);
+            
+            if (selectedNeed) {
+                // Store the selected need with NGO name for the donation page
+                localStorage.setItem('selectedNeed', JSON.stringify({
+                    ...selectedNeed,
+                    ngoName: selectedNeed.ngo // Ensure NGO name is included
+                }));
+                window.location.href = 'donationnew.html';
+            }
+        }
+        
+        // Event listeners
+        refreshBtn.addEventListener('click', displayNeeds);
+        categoryFilter.addEventListener('change', displayNeeds);
+        urgencyFilter.addEventListener('change', displayNeeds);
+        
+        // Initial load
+        document.addEventListener('DOMContentLoaded', displayNeeds);
+        
+        // Auto-refresh every 30 seconds
+        setInterval(displayNeeds, 30000);
+    </script>
+</body>
+</html>

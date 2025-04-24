@@ -1,0 +1,160 @@
+2025-04-02 22:12:30,585 - INFO - Starting chatbot training...
+2025-04-02 22:12:30,587 - INFO - Loaded 8 intents
+2025-04-02 22:12:30,587 - INFO - Prepared 43 training samples
+2025-04-02 22:12:30,595 - INFO - Vectorized features: 28 dimensions
+2025-04-02 22:12:30,688 - INFO - 
+Classification Report:
+                         precision    recall  f1-score   support
+
+             about_hope       1.00      1.00      1.00         1
+        donation_amount       0.00      0.00      0.00         0
+       donation_process       0.00      0.00      0.00         1
+                goodbye       0.00      0.00      0.00         1
+               greeting       1.00      0.33      0.50         3
+material_donation_steps       1.00      0.50      0.67         2
+        payment_methods       0.00      0.00      0.00         0
+       supported_cities       1.00      1.00      1.00         1
+
+               accuracy                           0.44         9
+              macro avg       0.50      0.35      0.40         9
+           weighted avg       0.78      0.44      0.54         9
+
+2025-04-02 22:12:30,696 - INFO - Artifacts saved to models
+2025-04-02 22:12:30,697 - INFO - Training completed successfully
+2025-04-04 00:39:55,079 - INFO - Best parameters: {'clf__C': np.float64(1.3076473382928542), 'clf__max_iter': 1000, 'clf__penalty': 'l1', 'tfidf__max_features': 3000, 'tfidf__ngram_range': (1, 3)}
+2025-04-04 00:39:55,107 - INFO - 
+Classification Report:
+                         precision    recall  f1-score   support
+
+             about_hope       1.00      1.00      1.00         2
+        donation_amount       0.00      0.00      0.00         3
+       donation_process       0.33      0.33      0.33         3
+                goodbye       0.00      0.00      0.00         2
+               greeting       0.25      1.00      0.40         2
+material_donation_steps       0.00      0.00      0.00         2
+        payment_methods       1.00      0.33      0.50         3
+       supported_cities       1.00      0.50      0.67         2
+
+               accuracy                           0.37        19
+              macro avg       0.45      0.40      0.36        19
+           weighted avg       0.45      0.37      0.35        19
+
+2025-04-04 00:39:55,109 - INFO - Accuracy: 0.37
+2025-04-04 00:39:55,117 - INFO - Model artifacts saved to models/ directory
+2025-04-04 00:39:56,058 - INFO - Saved confusion matrix visualization
+2025-04-04 00:39:56,059 - INFO - 
+Testing key predictions:
+2025-04-04 00:39:56,061 - INFO - 'how much to donate' => donation_amount (expected: donation_amount, confidence: 0.35)
+2025-04-04 00:39:56,063 - INFO - 'what's the process' => donation_process (expected: donation_process, confidence: 0.38)
+2025-04-04 00:39:56,065 - INFO - 'hi' => greeting (expected: greeting, confidence: 0.17)
+2025-04-04 00:39:56,068 - INFO - 'bye' => goodbye (expected: goodbye, confidence: 0.52)
+2025-04-04 00:39:56,071 - INFO - 'payment methods' => greeting (expected: payment_methods, confidence: 0.17)
+2025-04-04 00:43:42,447 - ERROR - Training failed: integer division or modulo by zero
+2025-04-04 00:43:42,448 - ERROR - Fatal error during training: integer division or modulo by zero
+2025-04-04 00:48:18,377 - INFO - Final class distribution:
+Counter({'about_hope': 15, 'donation_process': 15, 'supported_cities': 15, 'donation_amount': 15, 'material_donation_steps': 15, 'payment_methods': 15, 'greeting': 15, 'goodbye': 15, 'fallback': 15})
+2025-04-04 00:48:22,545 - INFO - Best parameters: {'clf__C': np.float64(5.557494308839644), 'clf__max_iter': 1000, 'clf__penalty': 'l2', 'tfidf__max_features': 2000, 'tfidf__ngram_range': (1, 1)}
+2025-04-04 00:48:22,551 - INFO - 
+Optimized Classification Report:
+                         precision    recall  f1-score   support
+
+             about_hope       1.00      1.00      1.00         3
+        donation_amount       0.33      0.67      0.44         3
+       donation_process       0.00      0.00      0.00         3
+               fallback       0.38      1.00      0.55         3
+                goodbye       1.00      0.67      0.80         3
+               greeting       1.00      0.33      0.50         3
+material_donation_steps       0.67      0.67      0.67         3
+        payment_methods       1.00      0.33      0.50         3
+       supported_cities       1.00      1.00      1.00         3
+
+               accuracy                           0.63        27
+              macro avg       0.71      0.63      0.61        27
+           weighted avg       0.71      0.63      0.61        27
+
+2025-04-04 00:48:23,175 - INFO - Saved confusion matrix to confusion_matrix.png
+2025-04-04 00:48:23,177 - INFO - Average prediction confidence: 0.48
+2025-04-04 00:48:23,184 - INFO - Saved model artifacts to models/ directory
+2025-04-04 00:48:23,184 - INFO - 
+Critical Intent Validation:
+2025-04-04 00:48:23,241 - INFO - Training completed successfully!
+2025-04-04 00:52:45,956 - INFO - Final class distribution:
+Counter({'about_hope': 20, 'donation_process': 20, 'supported_cities': 20, 'donation_amount': 20, 'material_donation_steps': 20, 'payment_methods': 20, 'greeting': 20, 'goodbye': 20, 'fallback': 20})
+2025-04-04 00:52:45,968 - INFO - 
+Classification Report:
+                         precision    recall  f1-score   support
+
+             about_hope       1.00      1.00      1.00         5
+        donation_amount       0.33      0.20      0.25         5
+       donation_process       0.25      0.20      0.22         5
+               fallback       0.28      1.00      0.43         5
+                goodbye       1.00      0.60      0.75         5
+               greeting       0.50      0.20      0.29         5
+material_donation_steps       0.29      0.40      0.33         5
+        payment_methods       1.00      0.20      0.33         5
+       supported_cities       1.00      0.40      0.57         5
+
+               accuracy                           0.47        45
+              macro avg       0.63      0.47      0.46        45
+           weighted avg       0.63      0.47      0.46        45
+
+2025-04-04 00:52:45,973 - INFO - Saved complete model pipeline to models/final_model.pkl
+2025-04-04 00:52:45,974 - INFO - 
+Intent Validation Results:
+2025-04-04 00:52:45,975 - INFO - [FAIL] 'how much to donate' => material_donation_steps (expected: donation_amount, confidence: 0.35)
+2025-04-04 00:52:45,977 - INFO - [FAIL] 'minimum amount' => fallback (expected: donation_amount, confidence: 0.25)
+2025-04-04 00:52:45,979 - INFO - [PASS] 'payment options' => payment_methods (expected: payment_methods, confidence: 0.74)
+2025-04-04 00:52:45,980 - INFO - [PASS] 'donate clothes' => material_donation_steps (expected: material_donation_steps, confidence: 0.35)
+2025-04-04 00:52:45,981 - INFO - [FAIL] 'hi' => fallback (expected: greeting, confidence: 0.25)
+2025-04-04 00:52:45,982 - INFO - [PASS] 'bye' => goodbye (expected: goodbye, confidence: 0.73)
+2025-04-04 00:52:45,983 - INFO - Training completed successfully!
+2025-04-04 01:03:18,081 - WARNING - Some intents were removed due to insufficient patterns
+2025-04-04 01:03:22,418 - INFO - Best parameters: {'clf__C': np.float64(72.61414516028837), 'clf__max_iter': 2000, 'clf__penalty': 'l2', 'clf__solver': 'liblinear', 'tfidf__max_df': 0.7, 'tfidf__max_features': 2000, 'tfidf__min_df': 2, 'tfidf__ngram_range': (1, 1)}
+2025-04-04 01:03:22,424 - INFO - 
+Optimized Classification Report:
+                         precision    recall  f1-score   support
+
+             about_hope       1.00      1.00      1.00         2
+        donation_amount       0.60      0.75      0.67         4
+       donation_process       0.00      0.00      0.00         3
+                goodbye       0.33      1.00      0.50         3
+               greeting       0.00      0.00      0.00         3
+material_donation_steps       0.50      0.67      0.57         3
+        payment_methods       1.00      1.00      1.00         3
+       supported_cities       1.00      0.33      0.50         3
+
+               accuracy                           0.58        24
+              macro avg       0.55      0.59      0.53        24
+           weighted avg       0.54      0.58      0.52        24
+
+2025-04-04 01:03:22,428 - INFO - Model saved with all optimizations
+2025-04-04 01:03:22,840 - INFO - Saved confusion matrix
+2025-04-04 01:03:22,841 - INFO - 
+Critical Intent Validation:
+2025-04-04 01:03:22,843 - INFO - PASS 'how much to donate' => donation_amount (expected: donation_amount, confidence: 0.87)
+2025-04-04 01:03:22,845 - INFO - PASS 'minimum amount' => donation_amount (expected: donation_amount, confidence: 0.95)
+2025-04-04 01:03:22,847 - INFO - PASS 'payment options' => payment_methods (expected: payment_methods, confidence: 0.96)
+2025-04-04 01:03:22,850 - INFO - PASS 'donate clothes' => material_donation_steps (expected: material_donation_steps, confidence: 0.82)
+2025-04-04 01:03:22,853 - INFO - FAIL 'hi' => goodbye (expected: greeting, confidence: 0.52)
+2025-04-04 01:03:22,854 - INFO - Training succeeded with all optimizations!
+2025-04-04 01:22:54,412 - WARNING - Intent 'fallback' has insufficient patterns, skipping
+2025-04-04 01:22:54,413 - INFO - Training on 7 intents with 145 total samples
+2025-04-04 01:22:58,382 - INFO - Best params: {'clf__C': np.float64(0.6647135865318028), 'clf__max_iter': 500, 'clf__penalty': 'l2', 'clf__solver': 'lbfgs', 'tfidf__max_features': 1500, 'tfidf__min_df': 2, 'tfidf__ngram_range': (1, 2)}
+2025-04-04 01:22:58,388 - INFO - 
+Classification Report:
+                   precision    recall  f1-score   support
+
+  donation_amount       0.60      0.60      0.60         5
+ donation_process       0.33      0.20      0.25         5
+          goodbye       0.80      0.80      0.80         5
+         greeting       0.75      0.86      0.80         7
+material_donation       0.33      0.40      0.36         5
+  payment_methods       1.00      0.60      0.75         5
+ payment_security       0.71      1.00      0.83         5
+
+         accuracy                           0.65        37
+        macro avg       0.65      0.64      0.63        37
+     weighted avg       0.65      0.65      0.64        37
+
+2025-04-04 01:22:58,394 - INFO - Model saved successfully
+2025-04-04 01:22:58,395 - INFO - Training completed with all optimizations!

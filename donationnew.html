@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - Hope</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            background-color: #f5faf8;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Main Content */
+        .donation-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .donation-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .donation-title {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .donation-title span {
+            color: #54bd95;
+        }
+
+        .donation-subtitle {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        /* Request Details */
+        .request-details {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+
+        .request-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .request-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #54bd95;
+        }
+
+        .request-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .request-ngo {
+            font-weight: 600;
+            color: #54bd95;
+        }
+
+        .request-location {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .request-description {
+            margin-bottom: 1.5rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .request-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            background-color: #f9f9f9;
+        }
+
+        .item-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .item-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #e8f5e9;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #54bd95;
+            font-size: 20px;
+        }
+
+        .item-name {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .item-quantity {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        /* Donation Options */
+        .donation-options {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        .options-title {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .donation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .donation-button {
+            background-color: #54bd95;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .donation-button:hover {
+            background-color: #3a8f6d;
+            transform: translateY(-2px);
+        }
+
+        /* Donation Forms */
+        .donation-form {
+            display: none;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .form-title {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus {
+            border-color: #54bd95;
+            box-shadow: 0 0 0 2px rgba(84, 189, 149, 0.2);
+            outline: none;
+        }
+
+        .form-submit {
+            background-color: #54bd95;
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .form-submit:hover {
+            background-color: #3a8f6d;
+        }
+
+        /* Payment Gateway Styles */
+        .payment-method {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .payment-method:hover {
+            border-color: #54bd95;
+            background-color: #f8f9fa;
+        }
+
+        .payment-method.selected {
+            border-color: #54bd95;
+            background-color: rgba(84, 189, 149, 0.05);
+        }
+
+        .payment-method input[type="radio"] {
+            margin-right: 1rem;
+        }
+
+        .payment-method-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #555;
+        }
+
+        .payment-method-label {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .payment-security {
+            display: flex;
+            align-items: center;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .payment-security i {
+            color: #54bd95;
+            margin-right: 0.5rem;
+        }
+
+        /* Success Section Styles */
+        .success-message {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: #54bd95;
+            margin-bottom: 1.5rem;
+        }
+
+        .success-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .success-message p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .success-details {
+            background-color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .detail-row {
+            display: flex;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .detail-row:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            width: 150px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .detail-value {
+            flex: 1;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .nav-items {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .auth-buttons {
+                margin-top: 1rem;
+            }
+
+            .donation-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .detail-row {
+                flex-direction: column;
+            }
+            
+            .detail-label {
+                width: 100%;
+                margin-bottom: 0.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-wrapper">
+            <div class="nav-items">
+                <div class="logo">HOPE</div>
+                <div class="nav-links">
+                    <a href="indexnew.html" class="nav-link">Home</a>
+                    <a href="urgent-needs.html" class="nav-link">Urgent Needs</a>
+                    <a href="#" class="nav-link">Contact us</a>
+                </div>
+                <div class="auth-buttons">
+                    <a href="index.html" class="auth-button login">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="donation-container">
+            <div class="donation-header">
+                <h1 class="donation-title">Fulfill <span>Request</span></h1>
+                <p class="donation-subtitle">Help fulfill this urgent need from an NGO</p>
+            </div>
+            
+            <div class="request-details" id="requestDetails">
+                <!-- Request details will be populated here -->
+            </div>
+            
+            <div class="donation-options">
+                <h2 class="options-title">How would you like to help?</h2>
+                <div class="donation-buttons">
+                    <button class="donation-button" onclick="showMoneyForm()">
+                        <i class="fas fa-money-bill-wave"></i> Donate Money
+                    </button>
+                    <button class="donation-button" onclick="showMaterialForm()">
+                        <i class="fas fa-box-open"></i> Donate Items
+                    </button>
+                </div>
+                
+                <!-- Money Donation Form -->
+                <div id="money-donation-form" class="donation-form">
+                    <h3 class="form-title">Donate Money</h3>
+                    <form id="donation-form">
+                        <div class="form-group">
+                            <label for="amount" class="form-label">Amount (INR)</label>
+                            <input type="number" id="amount" name="amount" class="form-input" placeholder="Enter amount" min="10" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="Enter your name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <button type="submit" class="form-submit">Proceed to Payment</button>
+                    </form>
+                </div>
+                
+                <!-- Payment Gateway -->
+                <div id="payment-gateway" class="donation-form" style="display: none;">
+                    <div class="payment-header">
+                        <h3 class="form-title">Secure Payment</h3>
+                        <div class="payment-amount">₹<span id="payment-amount">0</span></div>
+                    </div>
+
+                    <div class="payment-methods">
+                        <div class="payment-method" onclick="selectPaymentMethod('credit-card')">
+                            <input type="radio" name="payment-method" id="credit-card" checked>
+                            <i class="fab fa-credit-card payment-method-icon"></i>
+                            <span class="payment-method-label">Credit/Debit Card</span>
+                        </div>
+
+                        <div class="payment-method" onclick="selectPaymentMethod('upi')">
+                            <input type="radio" name="payment-method" id="upi">
+                            <i class="fas fa-mobile-alt payment-method-icon"></i>
+                            <span class="payment-method-label">UPI Payment</span>
+                        </div>
+
+                        <div class="payment-method" onclick="selectPaymentMethod('netbanking')">
+                            <input type="radio" name="payment-method" id="netbanking">
+                            <i class="fas fa-university payment-method-icon"></i>
+                            <span class="payment-method-label">Net Banking</span>
+                        </div>
+                    </div>
+
+                    <!-- Credit Card Form -->
+                    <div id="credit-card-form" class="payment-form">
+                        <div class="form-group">
+                            <label for="card-number" class="form-label">Card Number</label>
+                            <input type="text" id="card-number" class="form-input" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCardNumber(this)">
+                        </div>
+
+                        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                            <div style="flex: 1;">
+                                <label for="expiry-date" class="form-label">Expiry Date</label>
+                                <input type="text" id="expiry-date" class="form-input" placeholder="MM/YY" maxlength="5" oninput="formatExpiryDate(this)">
+                            </div>
+                            <div style="flex: 1;">
+                                <label for="cvv" class="form-label">CVV</label>
+                                <input type="text" id="cvv" class="form-input" placeholder="123" maxlength="4">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="card-name" class="form-label">Name on Card</label>
+                            <input type="text" id="card-name" class="form-input" placeholder="As shown on card">
+                        </div>
+                    </div>
+
+                    <!-- UPI Form -->
+                    <div id="upi-form" class="payment-form" style="display: none;">
+                        <div class="form-group">
+                            <label for="upi-id" class="form-label">UPI ID</label>
+                            <input type="text" id="upi-id" class="form-input" placeholder="yourname@upi">
+                        </div>
+                        <p style="text-align: center; color: #666; margin: 20px 0;">
+                            Or pay using any UPI app by scanning this QR code
+                        </p>
+                        <div style="text-align: center; margin: 20px 0;">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=hope@hdfc&pn=Hope%20Foundation&am=500&cu=INR" 
+                                 alt="UPI QR Code" style="width: 200px; height: 200px;">
+                        </div>
+                    </div>
+
+                    <!-- Net Banking Form -->
+                    <div id="netbanking-form" class="payment-form" style="display: none;">
+                        <div class="form-group">
+                            <label for="bank-select" class="form-label">Select Bank</label>
+                            <select id="bank-select" class="form-input">
+                                <option value="">Select your bank</option>
+                                <option value="sbi">State Bank of India</option>
+                                <option value="hdfc">HDFC Bank</option>
+                                <option value="icici">ICICI Bank</option>
+                                <option value="axis">Axis Bank</option>
+                                <option value="kotak">Kotak Mahindra Bank</option>
+                            </select>
+                        </div>
+                        <p style="text-align: center; color: #666; margin: 20px 0;">
+                            You will be redirected to your bank's secure payment page
+                        </p>
+                    </div>
+
+                    <div class="payment-security">
+                        <i class="fas fa-lock"></i>
+                        <span>Your payment is secured with 256-bit SSL encryption</span>
+                    </div>
+
+                    <button type="button" class="form-submit" onclick="processPayment()">
+                        Pay ₹<span id="final-amount">0</span>
+                    </button>
+                </div>
+
+                <!-- Payment Success -->
+                <div id="payment-success" class="donation-form" style="display: none;">
+                    <div class="success-message">
+                        <div class="success-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3 class="success-title">Payment Successful!</h3>
+                        <p>Thank you for your generous donation to <span id="success-ngo"></span></p>
+                        
+                        <div class="success-details">
+                            <div class="detail-row">
+                                <div class="detail-label">Amount:</div>
+                                <div class="detail-value">₹<span id="success-amount">0</span></div>
+                            </div>
+                            <div class="detail-row">
+                                <div class="detail-label">Transaction ID:</div>
+                                <div class="detail-value" id="transaction-id"></div>
+                            </div>
+                            <div class="detail-row">
+                                <div class="detail-label">Date & Time:</div>
+                                <div class="detail-value" id="payment-date"></div>
+                            </div>
+                            <div class="detail-row">
+                                <div class="detail-label">Payment Method:</div>
+                                <div class="detail-value" id="payment-method"></div>
+                            </div>
+                        </div>
+                        
+                        <button class="form-submit" onclick="window.location.href='urgent-needs.html'">
+                            <i class="fas fa-arrow-left"></i> Back to Urgent Needs
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Material Donation Form -->
+                <div id="material-donation-form" class="donation-form">
+                    <h3 class="form-title">Donate Items</h3>
+                    <form id="item-donation-form">
+                        <div class="form-group">
+                            <label for="donor-name" class="form-label">Full Name</label>
+                            <input type="text" id="donor-name" name="donor-name" class="form-input" placeholder="Enter your name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="donor-email" class="form-label">Email</label>
+                            <input type="email" id="donor-email" name="donor-email" class="form-input" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="donor-phone" class="form-label">Phone Number</label>
+                            <input type="tel" id="donor-phone" name="donor-phone" class="form-input" placeholder="Enter your phone number" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="donor-address" class="form-label">Pickup Address</label>
+                            <textarea id="donor-address" name="donor-address" class="form-input" placeholder="Enter your full address for pickup" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="donor-notes" class="form-label">Additional Notes</label>
+                            <textarea id="donor-notes" name="donor-notes" class="form-input" placeholder="Any special instructions for pickup"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="form-submit">Schedule Pickup</button>
+                    </form>
+                </div>
+                
+                <!-- Pickup Scheduling -->
+                <div id="pickup-scheduling" class="donation-form" style="display: none;">
+                    <h3 class="form-title">Schedule Your Pickup</h3>
+                    
+                    <div class="form-group">
+                        <label for="pickup-date" class="form-label">Pickup Date</label>
+                        <input type="date" id="pickup-date" class="form-input" min="${new Date().toISOString().split('T')[0]}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pickup-time" class="form-label">Pickup Time Slot</label>
+                        <select id="pickup-time" class="form-input" required>
+                            <option value="">Select time slot</option>
+                            <option value="9:00 AM - 12:00 PM">Morning (9:00 AM - 12:00 PM)</option>
+                            <option value="12:00 PM - 3:00 PM">Afternoon (12:00 PM - 3:00 PM)</option>
+                            <option value="3:00 PM - 6:00 PM">Evening (3:00 PM - 6:00 PM)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="special-instructions" class="form-label">Special Instructions</label>
+                        <textarea id="special-instructions" class="form-input" placeholder="Any special instructions for pickup"></textarea>
+                    </div>
+                    
+                    <button type="button" class="form-submit" onclick="confirmPickup()">
+                        Confirm Pickup
+                    </button>
+                </div>
+                
+                <!-- Pickup Confirmation -->
+                <div id="pickup-confirmation" class="donation-form" style="display: none;">
+                    <div class="success-message">
+                        <div class="success-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3 class="success-title">Pickup Scheduled!</h3>
+                        <p>Thank you for your donation to <span id="confirmation-ngo"></span></p>
+                        
+                        <div class="success-details">
+                            <div class="detail-row">
+                                <div class="detail-label">Items:</div>
+                                <div class="detail-value" id="confirmation-items"></div>
+                            </div>
+                            <div class="detail-row">
+                                <div class="detail-label">Pickup Date:</div>
+                                <div class="detail-value" id="confirmation-date"></div>
+                            </div>
+                            <div class="detail-row">
+                                <div class="detail-label">Time Slot:</div>
+                                <div class="detail-value" id="confirmation-time"></div>
+                            </div>
+                            <div class="detail-row">
+                                <div class="detail-label">Address:</div>
+                                <div class="detail-value" id="confirmation-address"></div>
+                            </div>
+                            <div class="detail-row">
+                                <div class="detail-label">Contact:</div>
+                                <div class="detail-value" id="confirmation-contact"></div>
+                            </div>
+                        </div>
+                        
+                        <button class="form-submit" onclick="window.location.href='urgent-needs.html'">
+                            <i class="fas fa-arrow-left"></i> Back to Urgent Needs
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-section">
+        <div class="footer-content">
+            <div class="footer-column-1">
+                <div class="footer-wrapper-1">
+                    <h3 class="footer-menu-title">Menu</h3>
+                    <nav class="footer-menu-links">
+                        About<br>
+                        Causes<br>
+                        Services<br>
+                        Events
+                    </nav>
+                    <div class="social-icons">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f328ca805879574c401999cb42f44c670a3006ed52e7a50af8543c923023ac60?placeholderIfAbsent=true&apiKey=96cef265759849c4ad3bb1dc4b9cb445" alt="Social icon 1" class="social-icon" loading="lazy">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/825f4830acef626439aab45e8ad05c578bd70e7e2082a839b4aeeedd02f16568?placeholderIfAbsent=true&apiKey=96cef265759849c4ad3bb1dc4b9cb445" alt="Social icon 2" class="social-icon" loading="lazy">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/888ffa44548d076780e899a9f2fcd5f92ee3e3c2c1357730afbed098b16fd322?placeholderIfAbsent=true&apiKey=96cef265759849c4ad3bb1dc4b9cb445" alt="Social icon 3" class="social-icon" loading="lazy">
+                    </div>
+                    <div class="footer-logo">
+                        <span>Hope</span>
+                        <div class="footer-logo-dot"></div>
+                    </div>
+                    <p class="footer-copyright">© 2025 Hope Inc. Copyright and rights reserved</p>
+                </div>
+            </div>
+            <div class="footer-column-2">
+                <div class="footer-wrapper-2">
+                    <form class="contact-form">
+                        <h3 class="form-title">Have A Question</h3>
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" aria-label="Enter your email">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" name="message" class="form-textarea" placeholder="What are you saying?" aria-label="What are you saying?"></textarea>
+                        <button type="submit" class="form-submit">Send Question</button>
+                    </form>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Terms and Conditions</a>
+                        <a href="#" class="footer-link">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Load the selected need from localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectedNeed = JSON.parse(localStorage.getItem('selectedNeed'));
+            
+            if (selectedNeed) {
+                // Populate the request details
+                const requestDetails = document.getElementById('requestDetails');
+                
+                requestDetails.innerHTML = `
+                    <h3 class="request-title">${selectedNeed.title}</h3>
+                    <div class="request-meta">
+                        <span class="request-ngo">${selectedNeed.ngo}</span>
+                        <span class="request-location">
+                            <i class="fas fa-map-marker-alt"></i> ${selectedNeed.location}
+                        </span>
+                    </div>
+                    <div class="request-description">
+                        <p>${selectedNeed.description}</p>
+                    </div>
+                    <div class="request-item">
+                        <div class="item-info">
+                            <div class="item-icon">
+                                <i class="fas fa-box"></i>
+                            </div>
+                            <div>
+                                <div class="item-name">${selectedNeed.title}</div>
+                                <div class="item-quantity">Quantity Needed: ${selectedNeed.quantity}</div>
+                            </div>
+                        </div>
+                        <div class="item-priority" style="padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; 
+                            background-color: ${getPriorityColor(selectedNeed.priority)}; color: white;">
+                            ${selectedNeed.priority}
+                        </div>
+                    </div>
+                    <div class="request-contact">
+                        <p><strong>Contact:</strong> ${selectedNeed.contact}</p>
+                    </div>
+                `;
+                
+                // Set NGO name in confirmation sections
+                document.getElementById('success-ngo').textContent = selectedNeed.ngo;
+                document.getElementById('confirmation-ngo').textContent = selectedNeed.ngo;
+                document.getElementById('confirmation-items').textContent = 
+                    `${selectedNeed.quantity} ${selectedNeed.title}`;
+            } else {
+                // If no need is selected, redirect back to urgent needs
+                window.location.href = 'urgent-needs.html';
+            }
+        });
+
+        function getPriorityColor(priority) {
+            switch(priority) {
+                case 'Urgent': return '#e74c3c';
+                case 'High': return '#f18f01';
+                case 'Medium': return '#54bd95';
+                case 'Low': return '#3498db';
+                default: return '#7f8c8d';
+            }
+        }
+
+        // Show money donation form
+        function showMoneyForm() {
+            document.getElementById('money-donation-form').style.display = 'block';
+            document.getElementById('material-donation-form').style.display = 'none';
+            document.getElementById('payment-gateway').style.display = 'none';
+            document.getElementById('payment-success').style.display = 'none';
+            document.getElementById('pickup-scheduling').style.display = 'none';
+            document.getElementById('pickup-confirmation').style.display = 'none';
+        }
+
+        // Show material donation form
+        function showMaterialForm() {
+            document.getElementById('material-donation-form').style.display = 'block';
+            document.getElementById('money-donation-form').style.display = 'none';
+            document.getElementById('payment-gateway').style.display = 'none';
+            document.getElementById('payment-success').style.display = 'none';
+            document.getElementById('pickup-scheduling').style.display = 'none';
+            document.getElementById('pickup-confirmation').style.display = 'none';
+        }
+
+        // Handle money donation form submission
+        document.getElementById('donation-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const amount = document.getElementById('amount').value;
+            
+            if (amount && amount >= 10) {
+                document.getElementById('money-donation-form').style.display = 'none';
+                document.getElementById('payment-gateway').style.display = 'block';
+                document.getElementById('payment-amount').textContent = amount;
+                document.getElementById('final-amount').textContent = amount;
+            } else {
+                alert('Please enter a valid amount (minimum ₹10)');
+            }
+        });
+
+        // Handle material donation form submission
+        document.getElementById('item-donation-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('material-donation-form').style.display = 'none';
+            document.getElementById('pickup-scheduling').style.display = 'block';
+        });
+
+        // Payment processing functions
+        function selectPaymentMethod(method) {
+            document.getElementById('credit-card-form').style.display = 'none';
+            document.getElementById('upi-form').style.display = 'none';
+            document.getElementById('netbanking-form').style.display = 'none';
+            
+            document.getElementById(`${method}-form`).style.display = 'block';
+            document.getElementById(method).checked = true;
+            
+            // Update payment method display
+            const methodLabels = {
+                'credit-card': 'Credit/Debit Card',
+                'upi': 'UPI Payment',
+                'netbanking': 'Net Banking'
+            };
+            document.getElementById('payment-method').textContent = methodLabels[method];
+        }
+
+        function formatCardNumber(input) {
+            let value = input.value.replace(/\D/g, '');
+            value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+            input.value = value;
+        }
+
+        function formatExpiryDate(input) {
+            let value = input.value.replace(/\D/g, '');
+            if (value.length > 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            input.value = value;
+        }
+
+        function processPayment() {
+            const submitBtn = document.querySelector('#payment-gateway .form-submit');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            
+            // Simulate payment processing
+            setTimeout(() => {
+                document.getElementById('payment-gateway').style.display = 'none';
+                document.getElementById('payment-success').style.display = 'block';
+                
+                // Set success details
+                const amount = document.getElementById('amount').value;
+                document.getElementById('success-amount').textContent = amount;
+                
+                // Generate a proper transaction ID
+                const transactionId = 'PAY-' + Math.random().toString(36).substring(2, 10).toUpperCase();
+                document.getElementById('transaction-id').textContent = transactionId;
+                
+                // Format the date properly
+                const now = new Date();
+                const options = { 
+                    year: 'numeric', 
+                    month: 'short', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: true
+                };
+                document.getElementById('payment-date').textContent = now.toLocaleString('en-US', options);
+                
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Pay ₹<span id="final-amount">0</span>';
+            }, 2000);
+        }
+
+        // Pickup scheduling functions
+        function confirmPickup() {
+            // Get all form values
+            const pickupDate = document.getElementById('pickup-date').value;
+            const pickupTime = document.getElementById('pickup-time').value;
+            const instructions = document.getElementById('special-instructions').value;
+            
+            // Validate inputs
+            if (!pickupDate || !pickupTime) {
+                alert('Please select both pickup date and time slot');
+                return;
+            }
+            
+            // Get donor info from previous form
+            const donorName = document.getElementById('donor-name').value;
+            const donorPhone = document.getElementById('donor-phone').value;
+            const donorAddress = document.getElementById('donor-address').value;
+            
+            // Format date for display
+            const formattedDate = new Date(pickupDate).toLocaleDateString('en-US', {
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric'
+            });
+            
+            // Update confirmation display
+            document.getElementById('confirmation-date').textContent = formattedDate;
+            document.getElementById('confirmation-time').textContent = pickupTime;
+            document.getElementById('confirmation-address').textContent = donorAddress;
+            document.getElementById('confirmation-contact').textContent = 
+                `${donorName} (${donorPhone})`;
+            
+            // Show confirmation
+            document.getElementById('pickup-scheduling').style.display = 'none';
+            document.getElementById('pickup-confirmation').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Children Donation - Hope</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Professional Donate Button Styles */
+        .donate-button {
+            background-color: #54bd95;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .donate-button:hover {
+            background-color: #3a8f6d;
+        }
+
+        .donate-button:active {
+            background-color: #3d8b40;
+        }
+
+        .ngo-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .ngo-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .ngo-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .ngo-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .ngo-cause {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="landing-page">
+            <nav class="nav-wrapper">
+                <div class="nav-items">
+                    <div class="logo">HOPE</div>
+                    <div class="nav-links">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="#" class="nav-link">Forum</a>
+                        <a href="#" class="nav-link">Contact us</a>
+                    </div>
+                    <div class="auth-buttons">
+                        <a href="register.html" class="auth-button register">Register</a>
+                        <a href="login.html" class="auth-button login">Login</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- NGO List Section -->
+        <section class="ngo-list-section">
+            <div class="ngo-list-wrapper">
+                <h1 class="ngo-list-title">Support Children in Need</h1>
+                <p class="ngo-list-description">
+                    Select a city to explore NGOs working for children's welfare in your area. 
+                    Learn about their causes, initiatives, and how you can support them.
+                </p>
+
+                <!-- City Selection Dropdown -->
+                <div class="city-selection">
+                    <label for="city-select" class="city-label">Select a City:</label>
+                    <select id="city-select" class="city-select" onchange="filterNGOs()">
+                        <option value="all">All Cities</option>
+                        <option value="mumbai">Mumbai</option>
+                        <option value="hyderabad">Hyderabad</option>
+                        <option value="kolkata">Kolkata</option>
+                        <option value="delhi">Delhi</option>
+                        <option value="ahmedabad">Ahmedabad</option>
+                    </select>
+                </div>
+
+                <!-- NGO Cards -->
+                <div class="ngo-cards" id="ngo-cards">
+                    <!-- Mumbai NGOs -->
+                    <div class="ngo-card" data-city="mumbai" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1602856580608-15599264e9f5?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Make A Difference" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Make A Difference (MAD)</h3>
+                            <p class="ngo-cause">Founded in 2006, MAD works to ensure better outcomes for children in shelters across India, including Mumbai. They engage volunteers to provide educational support and mentorship.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Make A Difference (MAD)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1524069290683-0457abfe42c3?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="St. Jude India ChildCare Centres" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">St. Jude India ChildCare Centres</h3>
+                            <p class="ngo-cause">Established in 2006, St. Jude provides free accommodation and holistic care to underprivileged children undergoing cancer treatment, along with their families.</p>
+                            <button class="donate-button" onclick="redirectToDonation('St. Jude India ChildCare Centres')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="children">
+                        <img src="https://images.unsplash.com/flagged/photo-1574097656146-0b43b7660cb6?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Toybank" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Toybank</h3>
+                            <p class="ngo-cause">Founded in 2004, Toybank promotes 'Development Through Play' by providing toys and setting up play centers for underprivileged children, aiming to foster physical, mental, and behavioral development.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Toybank')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?q=80&w=1713&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="BHUMI" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">BHUMI</h3>
+                            <p class="ngo-cause">Launched in 2006, BHUMI is one of India's largest independent youth volunteer non-profit organizations, focusing on education and child welfare through volunteer-driven initiatives.</p>
+                            <button class="donate-button" onclick="redirectToDonation('BHUMI')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Teach For India" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Teach For India</h3>
+                            <p class="ngo-cause">Founded in 2009, Teach For India recruits college graduates and professionals to serve as full-time teachers in low-income schools, aiming to eliminate educational inequity.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Teach For India')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Apnalaya" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Apnalaya</h3>
+                            <p class="ngo-cause">Established in 1973, Apnalaya focuses on empowering marginalized communities in Mumbai, with programs addressing child welfare, education, and health.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Apnalaya')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Hyderabad NGOs -->
+                    <div class="ngo-card" data-city="hyderabad" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1498712681408-fdcfb0eca86e?q=80&w=1752&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Make A Difference" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Make A Difference (MAD)</h3>
+                            <p class="ngo-cause">MAD operates in Hyderabad, working with children in shelters to provide education and mentorship.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Make A Difference (MAD)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="St. Jude India ChildCare Centres" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">St. Jude India ChildCare Centres</h3>
+                            <p class="ngo-cause">St. Jude has a presence in Hyderabad, offering free accommodation and support to children undergoing cancer treatment.</p>
+                            <button class="donate-button" onclick="redirectToDonation('St. Jude India ChildCare Centres')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1489942986787-cded4ecf962e?q=80&w=1746&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Toybank" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Toybank</h3>
+                            <p class="ngo-cause">Toybank operates in Hyderabad, setting up play centers and distributing toys to promote development through play among underprivileged children.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Toybank')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1533254012848-644c18f39289?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="BHUMI" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">BHUMI</h3>
+                            <p class="ngo-cause">BHUMI's Hyderabad chapter engages volunteers in teaching and supporting underprivileged children, focusing on holistic development.</p>
+                            <button class="donate-button" onclick="redirectToDonation('BHUMI')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1500283281129-71909ce26948?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Teach For India" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Teach For India</h3>
+                            <p class="ngo-cause">Teach For India extends its fellowship program to Hyderabad, working towards educational equity in the city's schools.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Teach For India')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1573894999291-f440466112cc?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Balala Hakula Sangham" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Balala Hakula Sangham</h3>
+                            <p class="ngo-cause">This organization advocates for children's rights in Hyderabad, working to eliminate child labor and promote education.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Balala Hakula Sangham')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Kolkata NGOs -->
+                    <div class="ngo-card" data-city="kolkata" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1596694857380-4dad49f5b846?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Make A Difference" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Make A Difference (MAD)</h3>
+                            <p class="ngo-cause">MAD operates in Kolkata, providing educational support and mentorship to children in shelter homes.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Make A Difference (MAD)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="children">
+                        <img src="https://images.unsplash.com/flagged/photo-1574098335395-18cf525e45d6?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="St. Jude India ChildCare Centres" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">St. Jude India ChildCare Centres</h3>
+                            <p class="ngo-cause">St. Jude offers free accommodation and holistic care to children undergoing cancer treatment in Kolkata.</p>
+                            <button class="donate-button" onclick="redirectToDonation('St. Jude India ChildCare Centres')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1629872928185-171e13c8e58b?q=80&w=1748&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Toybank" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Toybank</h3>
+                            <p class="ngo-cause">Toybank runs play centers in Kolkata, distributing toys to foster development through play among underprivileged children.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Toybank')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1592060035939-ae6e7a1cba86?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="BHUMI" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">BHUMI</h3>
+                            <p class="ngo-cause">BHUMI's Kolkata chapter focuses on education and child welfare through volunteer-led initiatives.</p>
+                            <button class="donate-button" onclick="redirectToDonation('BHUMI')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1627475312657-3752fa068473?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Teach For India" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Teach For India</h3>
+                            <p class="ngo-cause">Teach For India extends its fellowship program to Kolkata, aiming to address educational inequity in the city's schools.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Teach For India')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1573894998033-c0cef4ed722b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Child In Need Institute (CINI)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Child In Need Institute (CINI)</h3>
+                            <p class="ngo-cause">CINI works towards improving the quality of life for children, women, and adolescents in Kolkata, focusing on health, nutrition, and education.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Child In Need Institute (CINI)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Delhi NGOs -->
+                    <div class="ngo-card" data-city="delhi" data-cause="children">
+                        <img src="https://plus.unsplash.com/premium_photo-1664365804832-58c73fa9d504?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Make A Difference" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Make A Difference (MAD)</h3>
+                            <p class="ngo-cause">MAD operates in Delhi, working with children in shelters to provide education and mentorship.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Make A Difference (MAD)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1600349803269-6de317043ff0?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="St. Jude India ChildCare Centres" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">St. Jude India ChildCare Centres</h3>
+                            <p class="ngo-cause">St. Jude provides free accommodation and holistic care to children undergoing cancer treatment in Delhi.</p>
+                            <button class="donate-button" onclick="redirectToDonation('St. Jude India ChildCare Centres')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1542839577-6de07fb2cda5?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Toybank" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Toybank</h3>
+                            <p class="ngo-cause">Toybank sets up play centers and distributes toys in Delhi to promote development through play among underprivileged children.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Toybank')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1559912289-f8185f0bdecd?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="BHUMI" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">BHUMI</h3>
+                            <p class="ngo-cause">BHUMI's Delhi chapter engages volunteers in teaching and supporting underprivileged children, focusing on holistic development.</p>
+                            <button class="donate-button" onclick="redirectToDonation('BHUMI')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1518174148433-c63260e11cb2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Teach For India" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Teach For India</h3>
+                            <p class="ngo-cause">Teach For India runs its fellowship program in Delhi, working towards educational equity in the city's schools.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Teach For India')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1630178836733-3d61d8974258?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pratham" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Pratham</h3>
+                            <p class="ngo-cause">Pratham focuses on providing quality education to underprivileged children in Delhi, aiming to bridge the learning gap.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Pratham')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Ahmedabad NGOs -->
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1629872430082-93d8912beccf?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Make A Difference" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Make A Difference (MAD)</h3>
+                            <p class="ngo-cause">MAD operates in Ahmedabad, providing educational support and mentorship to children in shelter homes.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Make A Difference (MAD)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1659451336016-00d62d32f677?q=80&w=1715&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="St. Jude India ChildCare Centres" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">St. Jude India ChildCare Centres</h3>
+                            <p class="ngo-cause">St. Jude offers free accommodation and holistic care to children undergoing cancer treatment in Ahmedabad.</p>
+                            <button class="donate-button" onclick="redirectToDonation('St. Jude India ChildCare Centres')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1569761597965-cbf328af6d1f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Toybank" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Toybank</h3>
+                            <p class="ngo-cause">Toybank runs play centers in Ahmedabad, distributing toys to foster development through play among underprivileged children.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Toybank')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="children">
+                        <img src="https://images.unsplash.com/photo-1631616804691-06a6f0b3a6ec?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="BHUMI" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">BHUMI</h3>
+                            <p class="ngo-cause">BHUMI's Ahmedabad chapter focuses on education and child welfare through volunteer-led initiatives.</p>
+                            <button class="donate-button" onclick="redirectToDonation('BHUMI')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="children">
+                        <img src="https://plus.unsplash.com/premium_photo-1705624584177-42b5df9630a5?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Teach For India" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Teach For India</h3>
+                            <p class="ngo-cause">Teach For India extends its fellowship program to Ahmedabad, working towards educational equity in the city's schools.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Teach For India')">Donate Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-section">
+        <div class="footer-content">
+            <div class="footer-column-1">
+                <div class="footer-wrapper-1">
+                    <h3 class="footer-menu-title">Menu</h3>
+                    <nav class="footer-menu-links">
+                        <a href="#">About</a><br>
+                        <a href="#">Causes</a><br>
+                        <a href="#">Services</a><br>
+                        <a href="#">Events</a>
+                    </nav>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div class="footer-logo">
+                        <span>Hope</span>
+                        <div class="footer-logo-dot"></div>
+                    </div>
+                    <p class="footer-copyright">© 2025 Hope Inc. Copyright and rights reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter NGOs based on city selection and cause
+        function filterNGOs() {
+            const city = document.getElementById('city-select').value;
+            const ngoCards = document.querySelectorAll('.ngo-card');
+
+            ngoCards.forEach(card => {
+                const cardCity = card.getAttribute('data-city');
+                const cardCause = card.getAttribute('data-cause');
+
+                if ((city === 'all' || cardCity === city) && cardCause === 'children') {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Redirect to donation page with selected NGO
+        function redirectToDonation(ngoName) {
+            localStorage.setItem('selectedNGO', ngoName);
+            window.location.href = 'donation.html';
+        }
+
+        // Initial filter on page load
+        filterNGOs();
+    </script>
+</body>
+</html>

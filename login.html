@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Hope</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <header>
+        <div class="landing-page">
+            <nav class="nav-wrapper">
+                <div class="nav-items">
+                    <div class="logo">HOPE</div>
+                    <div class="nav-links">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="#" class="nav-link">Forum</a>
+                        <a href="#" class="nav-link">Contact us</a>
+                    </div>
+                    <div class="auth-buttons">
+                        <a href="register.html" class="auth-button register">Register</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="login-section">
+            <div class="login-wrapper">
+                <h2 class="login-title">Welcome Back to Hope</h2>
+                <p class="login-subtitle">Choose how you'd like to log in and continue making a difference.</p>
+                <div class="login-options">
+                    <div class="login-card">
+                        <h3 class="login-card-title">Login as Donor</h3>
+                        <form class="login-form" id="donor-login-form">
+                            <div class="form-group">
+                                <label for="donor-username">Username</label>
+                                <input type="text" id="donor-username" name="username" placeholder="Enter your username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="donor-password">Password</label>
+                                <input type="password" id="donor-password" name="password" placeholder="Enter your password" required>
+                                <small class="password-hint">Password must be at least 8 characters long, with at least one uppercase letter, one lowercase letter, and one number.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="donor-email">Email</label>
+                                <input type="email" id="donor-email" name="email" placeholder="Enter your email" required>
+                            </div>
+                            <button type="submit" class="login-card-button">Login</button>
+                        </form>
+                    </div>
+                    <div class="login-card">
+                        <h3 class="login-card-title">Login as NGO</h3>
+                        <form class="login-form" id="ngo-login-form">
+                            <div class="form-group">
+                                <label for="ngo-username">Username</label>
+                                <input type="text" id="ngo-username" name="username" placeholder="Enter your username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ngo-password">Password</label>
+                                <input type="password" id="ngo-password" name="password" placeholder="Enter your password" required>
+                                <small class="password-hint">Password must be at least 8 characters long, with at least one uppercase letter, one lowercase letter, and one number.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="ngo-email">Email</label>
+                                <input type="email" id="ngo-email" name="email" placeholder="Enter your email" required>
+                            </div>
+                            <button type="submit" class="login-card-button">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-section">
+        <div class="footer-content">
+            <div class="footer-column-1">
+                <div class="footer-wrapper-1">
+                    <h3 class="footer-menu-title">Menu</h3>
+                    <nav class="footer-menu-links">
+                        About<br>
+                        Causes<br>
+                        Services<br>
+                        Events
+                    </nav>
+                    <div class="social-icons">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f328ca805879574c401999cb42f44c670a3006ed52e7a50af8543c923023ac60?placeholderIfAbsent=true&apiKey=96cef265759849c4ad3bb1dc4b9cb445" alt="Social icon 1" class="social-icon" loading="lazy">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/825f4830acef626439aab45e8ad05c578bd70e7e2082a839b4aeeedd02f16568?placeholderIfAbsent=true&apiKey=96cef265759849c4ad3bb1dc4b9cb445" alt="Social icon 2" class="social-icon" loading="lazy">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/888ffa44548d076780e899a9f2fcd5f92ee3e3c2c1357730afbed098b16fd322?placeholderIfAbsent=true&apiKey=96cef265759849c4ad3bb1dc4b9cb445" alt="Social icon 3" class="social-icon" loading="lazy">
+                    </div>
+                    <div class="footer-logo">
+                        <span>Hope</span>
+                        <div class="footer-logo-dot"></div>
+                    </div>
+                    <p class="footer-copyright">© 2025 Hope Inc. Copyright and rights reserved</p>
+                </div>
+            </div>
+            <div class="footer-column-2">
+                <div class="footer-wrapper-2">
+                    <form class="contact-form">
+                        <h3 class="form-title">Have A Question</h3>
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" aria-label="Enter your email">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" name="message" class="form-textarea" placeholder="What are you saying?" aria-label="What are you saying?"></textarea>
+                        <button type="submit" class="form-submit">Send Question</button>
+                    </form>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Terms and Conditions</a>
+                        <a href="#" class="footer-link">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Password validation for Donor Login
+        const donorForm = document.getElementById('donor-login-form');
+        const donorPasswordInput = document.getElementById('donor-password');
+        const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
+        donorForm.addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent form submission
+            if (!passwordPattern.test(donorPasswordInput.value)) {
+                alert('Password must be at least 8 characters long, with at least one uppercase letter, one lowercase letter, and one number.');
+            } else {
+                // Redirect to index.html after successful login
+                window.location.href = 'indexnew.html';
+            }
+        });
+
+        // Password validation for NGO Login
+        const ngoForm = document.getElementById('ngo-login-form');
+        const ngoPasswordInput = document.getElementById('ngo-password');
+
+        ngoForm.addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent form submission
+            if (!passwordPattern.test(ngoPasswordInput.value)) {
+                alert('Password must be at least 8 characters long, with at least one uppercase letter, one lowercase letter, and one number.');
+            } else {
+                // Redirect to NGO Dashboard
+                window.location.href = 'ngo-dashboard.html';
+            }
+        });
+    </script>
+</body>
+</html>

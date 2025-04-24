@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women Empowerment Donation - Hope</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Professional Donate Button Styles */
+        .donate-button {
+            background-color: #54bd95;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .donate-button:hover {
+            background-color: #3a8f6d;
+        }
+
+        .donate-button:active {
+            background-color: #3d8b40;
+        }
+
+        .ngo-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .ngo-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .ngo-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .ngo-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .ngo-cause {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="landing-page">
+            <nav class="nav-wrapper">
+                <div class="nav-items">
+                    <div class="logo">HOPE</div>
+                    <div class="nav-links">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="#" class="nav-link">Forum</a>
+                        <a href="#" class="nav-link">Contact us</a>
+                    </div>
+                    <div class="auth-buttons">
+                        <a href="register.html" class="auth-button register">Register</a>
+                        <a href="login.html" class="auth-button login">Login</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- NGO List Section -->
+        <section class="ngo-list-section">
+            <div class="ngo-list-wrapper">
+                <h1 class="ngo-list-title">Support Women Empowerment</h1>
+                <p class="ngo-list-description">
+                    Select a city to explore NGOs working to empower women in your area. 
+                    Learn about their causes, initiatives, and how you can support them.
+                </p>
+
+                <!-- City Selection Dropdown -->
+                <div class="city-selection">
+                    <label for="city-select" class="city-label">Select a City:</label>
+                    <select id="city-select" class="city-select" onchange="filterNGOs()">
+                        <option value="all">All Cities</option>
+                        <option value="mumbai">Mumbai</option>
+                        <option value="hyderabad">Hyderabad</option>
+                        <option value="kolkata">Kolkata</option>
+                        <option value="delhi">Delhi</option>
+                        <option value="ahmedabad">Ahmedabad</option>
+                    </select>
+                </div>
+
+                <!-- NGO Cards -->
+                <div class="ngo-cards" id="ngo-cards">
+                    <!-- Mumbai NGOs -->
+                    <div class="ngo-card" data-city="mumbai" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1551731409-43eb3e517a1a?q=80&w=1744&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Snehalaya" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Snehalaya</h3>
+                            <p class="ngo-cause">Focus: Women’s empowerment, support for survivors of violence, and rehabilitation programs.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Snehalaya')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1627881569151-8031f692f0fd?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Apnalaya" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Apnalaya</h3>
+                            <p class="ngo-cause">Focus: Empowering women and children in marginalized communities through education, healthcare, and livelihood programs.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Apnalaya')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="women">
+                        <img src="https://plus.unsplash.com/premium_photo-1718570257738-5b27d5fbbe79?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Vacha Charitable Trust" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Vacha Charitable Trust</h3>
+                            <p class="ngo-cause">Focus: Gender equality, empowering women, and working on issues like education, legal rights, and health.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Vacha Charitable Trust')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1607350998531-0914f561000e?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pravah" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Pravah</h3>
+                            <p class="ngo-cause">Focus: Youth and women’s empowerment, promoting social change through leadership training, skill development, and community-building.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Pravah')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1707721690626-10e5f0366bcb?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Women’s India Trust WIT" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Women’s India Trust WIT</h3>
+                            <p class="ngo-cause">Focus: Empowering women through vocational training and providing them with skills for self-sufficiency and economic independence.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Women’s India Trust WIT')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="women">
+                        <img src="https://plus.unsplash.com/premium_photo-1670524465634-93cf255ffa8b?q=80&w=1708&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Mahila Sewa Trust" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Mahila Sewa Trust</h3>
+                            <p class="ngo-cause">Focus: Empowering women in the informal sector, particularly through self-help groups and skill-building initiatives.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Mahila Sewa Trust')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Delhi NGOs -->
+                    <div class="ngo-card" data-city="delhi" data-cause="women">
+                        <img src="https://plus.unsplash.com/premium_photo-1730063032443-415d966ab6eb?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sakhi" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Sakhi</h3>
+                            <p class="ngo-cause">Focus: Providing emotional and legal support to women survivors of violence and domestic abuse.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Sakhi')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1518131296958-df44106fd0ae?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Indian Women’s Welfare Association IWWA" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Indian Women’s Welfare Association IWWA</h3>
+                            <p class="ngo-cause">Focus: Women’s health, education, and empowerment through advocacy and support programs.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Indian Women’s Welfare Association IWWA')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="women">
+                        <img src="https://plus.unsplash.com/premium_photo-1682089789852-e3023ff6df24?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="SEWA Self-Employed Women's Association" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">SEWA Self-Employed Women's Association</h3>
+                            <p class="ngo-cause">Focus: Empowering women workers in the informal economy through skill development, advocacy, and cooperative models.</p>
+                            <button class="donate-button" onclick="redirectToDonation('SEWA Self-Employed Women Association')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1609252509229-364936a1d1a2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Breakthrough India" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Breakthrough India</h3>
+                            <p class="ngo-cause">Focus: Combating gender-based violence and promoting gender equality through campaigns and education.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Breakthrough India')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1559808033-6c487ea2d8bc?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Jagori" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Jagori</h3>
+                            <p class="ngo-cause">Focus: Women’s empowerment, advocating for gender justice, and organizing communities to combat violence and discrimination.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Jagori')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1441307811206-a12c74889338?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Nari Gunjan" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Nari Gunjan</h3>
+                            <p class="ngo-cause">Focus: Empowering women through legal aid, education, and addressing violence against women.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Nari Gunjan')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Kolkata NGOs -->
+                    <div class="ngo-card" data-city="kolkata" data-cause="women">
+                        <img src="https://plus.unsplash.com/premium_photo-1718570261870-135da5fc3ec7?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kolkata Sanved" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Kolkata Sanved</h3>
+                            <p class="ngo-cause">Focus: Using dance/movement therapy to empower women and girls, especially survivors of trafficking, violence, and exploitation.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Kolkata Sanved')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1570966087241-20278ac27b2c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Mann Ki Asha" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Mann Ki Asha</h3>
+                            <p class="ngo-cause">Focus: Women’s mental health and empowerment, addressing issues such as sexual violence, domestic abuse, and mental illness.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Mann Ki Asha')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1663685980249-830af33a3e51?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Gyanjyoti Women’s Welfare Society" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Gyanjyoti Women’s Welfare Society</h3>
+                            <p class="ngo-cause">Focus: Providing education, vocational training, and support to underprivileged women.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Gyanjyoti Women’s Welfare Society')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1627894482516-3b0809d0ebeb?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Nari Nirjatan Pratirodh Mancha NNPM" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Nari Nirjatan Pratirodh Mancha NNPM</h3>
+                            <p class="ngo-cause">Focus: Advocacy and support for women facing domestic violence, trafficking, and sexual abuse.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Nari Nirjatan Pratirodh Mancha NNPM')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1614700093262-dfd8c4d8910e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Samsa Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Samsa Foundation</h3>
+                            <p class="ngo-cause">Focus: Empowering marginalized women through skill development, financial independence, and education.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Samsa Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1600349803269-6de317043ff0?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Ujjwala Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Ujjwala Foundation</h3>
+                            <p class="ngo-cause">Focus: Empowering women through leadership development, especially in rural areas, and tackling issues of trafficking and gender discrimination.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Ujjwala Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Ahmedabad NGOs -->
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1662717402043-d3145ade14fb?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Mahila Jan Adhikar Manch MJAM" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Mahila Jan Adhikar Manch MJAM</h3>
+                            <p class="ngo-cause">Focus: Women’s rights, focusing on legal awareness, gender equality, and fighting for women’s justice.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Mahila Jan Adhikar Manch MJAM')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1512025259565-3aa15d09a935?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sakhi Mandal" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Sakhi Mandal</h3>
+                            <p class="ngo-cause">Focus: Empowering women in rural and urban areas through education, healthcare, and economic initiatives.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Sakhi Mandal')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1618245472861-b2b4e88431ed?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="SEWA Self-Employed Women’s Association" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">SEWA Self-Employed Women’s Association</h3>
+                            <p class="ngo-cause">Focus: Empowering informal sector women workers by organizing them for their rights, education, and skill training.</p>
+                            <button class="donate-button" onclick="redirectToDonation('SEWA Self-Employed Women’s Association')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1516022531723-ed0d24058337?q=80&w=1748&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Shakti Shalini" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Shakti Shalini</h3>
+                            <p class="ngo-cause">Focus: Providing shelter and support for women survivors of domestic violence and sexual abuse.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Shakti Shalini')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1600150806237-a7dffed6b53c?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Gandhi Peace Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Gandhi Peace Foundation</h3>
+                            <p class="ngo-cause">Focus: Women’s education, health, and empowerment through community-based initiatives.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Gandhi Peace Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1622182474215-e74d12074fcc?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Vatsalya Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Vatsalya Foundation</h3>
+                            <p class="ngo-cause">Focus: Women’s health, education, and child development programs aimed at improving the lives of women and children in marginalized communities.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Vatsalya Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Hyderabad NGOs -->
+                    <div class="ngo-card" data-city="hyderabad" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1629113130774-c5c13e45cd59?q=80&w=1748&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Women’s Initiative TWI" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Women’s Initiative TWI</h3>
+                            <p class="ngo-cause">Focus: Empowering marginalized women through education, skill development, and economic support.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Women’s Initiative TWI')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1496813146940-1601b02f81a4?q=80&w=1698&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Serene Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Serene Foundation</h3>
+                            <p class="ngo-cause">Focus: Providing healthcare, education, and empowerment programs for women, especially those from economically disadvantaged backgrounds.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Serene Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1622182473190-b300a0ddde9d?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Rang De" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Rang De</h3>
+                            <p class="ngo-cause">Focus: Providing affordable micro-loans to women entrepreneurs in underserved areas to enhance their livelihoods.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Rang De')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1497487231007-0a45e7b4b68a?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Nirmaan Organization" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Nirmaan Organization</h3>
+                            <p class="ngo-cause">Focus: Women’s education, health, and empowerment, working with rural and urban communities.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Nirmaan Organization')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1622182474268-a1a5f306baeb?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Mann Deshi Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Mann Deshi Foundation</h3>
+                            <p class="ngo-cause">Focus: Empowering women entrepreneurs in rural areas by providing them with resources, education, and access to markets.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Mann Deshi Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="women">
+                        <img src="https://images.unsplash.com/photo-1707721690544-781fe6ede937?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Annapurna Mahila Mandal" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Annapurna Mahila Mandal</h3>
+                            <p class="ngo-cause">Focus: Women’s empowerment, social justice, and improving access to healthcare and education for rural women.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Annapurna Mahila Mandal')">Donate Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-section">
+        <div class="footer-content">
+            <div class="footer-column-1">
+                <div class="footer-wrapper-1">
+                    <h3 class="footer-menu-title">Menu</h3>
+                    <nav class="footer-menu-links">
+                        <a href="#">About</a><br>
+                        <a href="#">Causes</a><br>
+                        <a href="#">Services</a><br>
+                        <a href="#">Events</a>
+                    </nav>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div class="footer-logo">
+                        <span>Hope</span>
+                        <div class="footer-logo-dot"></div>
+                    </div>
+                    <p class="footer-copyright">© 2025 Hope Inc. Copyright and rights reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter NGOs based on city selection and cause
+        function filterNGOs() {
+            const city = document.getElementById('city-select').value;
+            const ngoCards = document.querySelectorAll('.ngo-card');
+
+            ngoCards.forEach(card => {
+                const cardCity = card.getAttribute('data-city');
+                const cardCause = card.getAttribute('data-cause');
+
+                if ((city === 'all' || cardCity === city) && cardCause === 'women') {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Redirect to donation page with selected NGO
+        function redirectToDonation(ngoName) {
+            localStorage.setItem('selectedNGO', ngoName);
+            window.location.href = 'donation.html';
+        }
+
+        // Initial filter on page load
+        filterNGOs();
+    </script>
+</body>
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elderly Donation - Hope</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Professional Donate Button Styles */
+        .donate-button {
+            background-color: #54bd95;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .donate-button:hover {
+            background-color: #3a8f6d;
+        }
+
+        .donate-button:active {
+            background-color: #3d8b40;
+        }
+
+        .ngo-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .ngo-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .ngo-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .ngo-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .ngo-cause {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="landing-page">
+            <nav class="nav-wrapper">
+                <div class="nav-items">
+                    <div class="logo">HOPE</div>
+                    <div class="nav-links">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="#" class="nav-link">Forum</a>
+                        <a href="#" class="nav-link">Contact us</a>
+                    </div>
+                    <div class="auth-buttons">
+                        <a href="register.html" class="auth-button register">Register</a>
+                        <a href="login.html" class="auth-button login">Login</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- NGO List Section -->
+        <section class="ngo-list-section">
+            <div class="ngo-list-wrapper">
+                <h1 class="ngo-list-title">Support the Elderly</h1>
+                <p class="ngo-list-description">
+                    Select a city to explore NGOs working for the elderly in your area. 
+                    Learn about their causes, initiatives, and how you can support them.
+                </p>
+
+                <!-- City Selection Dropdown -->
+                <div class="city-selection">
+                    <label for="city-select" class="city-label">Select a City:</label>
+                    <select id="city-select" class="city-select" onchange="filterNGOs()">
+                        <option value="all">All Cities</option>
+                        <option value="mumbai">Mumbai</option>
+                        <option value="delhi">Delhi</option>
+                        <option value="kolkata">Kolkata</option>
+                        <option value="ahmedabad">Ahmedabad</option>
+                        <option value="hyderabad">Hyderabad</option>
+                    </select>
+                </div>
+
+                <!-- NGO Cards -->
+                <div class="ngo-cards" id="ngo-cards">
+                    <!-- Mumbai NGOs -->
+                    <div class="ngo-card" data-city="mumbai" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1516022531723-ed0d24058337?q=80&w=1748&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="HelpAge India" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">HelpAge India</h3>
+                            <p class="ngo-cause">Providing support, care, and advocacy for the elderly, including healthcare services, financial aid, and social inclusion programs.</p>
+                            <button class="donate-button" onclick="redirectToDonation('HelpAge India')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1522643527310-7222a3f57bb1?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Dignity Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Dignity Foundation</h3>
+                            <p class="ngo-cause">Empowering senior citizens through social and financial support, including organizing community events, providing helplines, and offering senior citizen welfare services.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Dignity Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1601614514155-0fa833ae6682?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Vatsalya Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Vatsalya Foundation</h3>
+                            <p class="ngo-cause">Providing healthcare, counseling, and other support services for elderly people, particularly in the areas of mental and emotional well-being.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Vatsalya Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1495041856086-05e4a6110af0?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Silver Innings" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Silver Innings</h3>
+                            <p class="ngo-cause">Providing services and resources for elderly care, including social activities, healthcare, and training for caregivers.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Silver Innings')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1495042823740-46feea76a69c?q=80&w=1861&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Agewell Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Agewell Foundation</h3>
+                            <p class="ngo-cause">Promoting the well-being and empowerment of senior citizens, including providing legal aid, healthcare services, and support for elderly individuals in need.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Agewell Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1557964856-785bab2214d8?q=80&w=1776&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Senior Citizens' Welfare Association" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Senior Citizens' Welfare Association</h3>
+                            <p class="ngo-cause">Addressing the needs of senior citizens, providing them with access to medical care, legal support, and social activities to combat isolation.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Senior Citizens Welfare Association')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Delhi NGOs -->
+                    <div class="ngo-card" data-city="delhi" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1511684344724-cda927f1ba0e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="HelpAge India" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">HelpAge India</h3>
+                            <p class="ngo-cause">Offering medical assistance, financial aid, and social support to senior citizens, along with advocacy for elderly rights.</p>
+                            <button class="donate-button" onclick="redirectToDonation('HelpAge India')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1496813146940-1601b02f81a4?q=80&w=1698&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Dignity Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Dignity Foundation</h3>
+                            <p class="ngo-cause">Offering programs for senior citizens’ welfare, including health camps, legal services, social support, and career opportunities for the elderly.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Dignity Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1518671157441-9c0520fb6018?q=80&w=1868&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Agewell Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Agewell Foundation</h3>
+                            <p class="ngo-cause">Providing elderly care services, offering support for pensioners, and addressing the physical and mental well-being of seniors.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Agewell Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1521401415461-83e7162b8e64?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Senior Citizens Association of India (SCAI)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Senior Citizens Association of India (SCAI)</h3>
+                            <p class="ngo-cause">Creating a support network for senior citizens through healthcare services, social events, and legal aid.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Senior Citizens Association of India (SCAI)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1533804786765-f30a3e73c33c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Indian Association of Gerontology" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Indian Association of Gerontology</h3>
+                            <p class="ngo-cause">Advocating for geriatric care and conducting awareness programs for senior citizens on health, rights, and social security.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Indian Association of Gerontology')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1577368287217-16ff9373a733?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Roti Bank" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Roti Bank</h3>
+                            <p class="ngo-cause">Providing food and care for elderly individuals, particularly those who are alone and in need, through community outreach.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Roti Bank')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Kolkata NGOs -->
+                    <div class="ngo-card" data-city="kolkata" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1459267809427-0b40207b2cb5?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Ramakrishna Mission - Seva Pratishthan" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Ramakrishna Mission - Seva Pratishthan</h3>
+                            <p class="ngo-cause">Offering healthcare and rehabilitation services for the elderly, particularly those in need of long-term care or assistance.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Ramakrishna Mission - Seva Pratishthan')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1516708768847-5920363ea640?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="HelpAge India" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">HelpAge India</h3>
+                            <p class="ngo-cause">Offering assistance to the elderly, including financial support, healthcare services, and advocacy for their rights.</p>
+                            <button class="donate-button" onclick="redirectToDonation('HelpAge India')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="elderly">
+                        <img src="https://plus.unsplash.com/premium_photo-1661322806498-4867760086f9?q=80&w=1717&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Dignity Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Dignity Foundation</h3>
+                            <p class="ngo-cause">Promoting the welfare of senior citizens through a variety of programs including social interaction, health support, and legal assistance.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Dignity Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1513149322119-bd83e691f24c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Indian Association of Retired Persons (IARP)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Indian Association of Retired Persons (IARP)</h3>
+                            <p class="ngo-cause">Providing social, financial, and healthcare services for retired individuals, focusing on community building and advocacy for seniors.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Indian Association of Retired Persons (IARP)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="elderly">
+                        <img src="https://plus.unsplash.com/premium_photo-1691502590968-fca6652b44ae?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Silver Inning Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Silver Inning Foundation</h3>
+                            <p class="ngo-cause">Offering elder care services, emotional support, health guidance, and creating a platform for senior citizens to engage in social activities.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Silver Inning Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1463335361701-e90f4c5045d0?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sampoorna Arogya Seva" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Sampoorna Arogya Seva</h3>
+                            <p class="ngo-cause">Providing healthcare and social services to senior citizens, including home visits for medical check-ups and support services for elderly individuals living alone.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Sampoorna Arogya Seva')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Ahmedabad NGOs -->
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1697305593259-d96aa6ed0e14?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="HelpAge India" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">HelpAge India</h3>
+                            <p class="ngo-cause">Providing financial aid, healthcare, and advocacy for the elderly population, ensuring they are not marginalized in society.</p>
+                            <button class="donate-button" onclick="redirectToDonation('HelpAge India')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1560885673-c18455b4e57e?q=80&w=1736&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Dignity Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Dignity Foundation</h3>
+                            <p class="ngo-cause">Empowering senior citizens through community support, organizing activities for seniors, and offering health camps and legal advice.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Dignity Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1560885673-4e2f056f6e2a?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Elder Care Trust" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Elder Care Trust</h3>
+                            <p class="ngo-cause">Providing residential care and support services for elderly people, ensuring their mental, emotional, and physical well-being.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Elder Care Trust')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1606203452426-f5af98e6f96e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Vatsalya Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Vatsalya Foundation</h3>
+                            <p class="ngo-cause">Providing healthcare, counseling, and support for elderly people, with a focus on ensuring they are well-cared-for and have opportunities for social engagement.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Vatsalya Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1596241487476-90c5e85de8db?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Silver Innings" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Silver Innings</h3>
+                            <p class="ngo-cause">Providing support for the elderly, including senior citizen care, health programs, and creating opportunities for active aging.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Silver Innings')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1667577113456-34c59803de33?q=80&w=1892&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Gujarat Senior Citizens' Council" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Gujarat Senior Citizens' Council</h3>
+                            <p class="ngo-cause">Providing advocacy and support for senior citizens, addressing their legal, medical, and social needs in Ahmedabad.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Gujarat Senior Citizens Council')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Hyderabad NGOs -->
+                    <div class="ngo-card" data-city="hyderabad" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1614700093262-dfd8c4d8910e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="HelpAge India" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">HelpAge India</h3>
+                            <p class="ngo-cause">Offering various services such as healthcare, social inclusion, and financial aid to elderly individuals, with a strong focus on improving their quality of life.</p>
+                            <button class="donate-button" onclick="redirectToDonation('HelpAge India')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1495557367294-fd19a5c20524?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Dignity Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Dignity Foundation</h3>
+                            <p class="ngo-cause">Creating a social and emotional support system for the elderly, offering healthcare, legal services, and organizing recreational activities.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Dignity Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1609848350757-252557c83136?q=80&w=1803&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Agewell Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Agewell Foundation</h3>
+                            <p class="ngo-cause">Offering a platform for the elderly to access healthcare, financial aid, and engage in social welfare activities to ensure their well-being.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Agewell Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1667367995928-d2709a24549b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sweekar - The Association of the Handicapped" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Sweekar - The Association of the Handicapped</h3>
+                            <p class="ngo-cause">Providing services to senior citizens with disabilities, offering medical assistance, rehabilitation, and social integration support.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Sweekar - The Association of the Handicapped')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1627881569151-8031f692f0fd?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Elder Care India" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Elder Care India</h3>
+                            <p class="ngo-cause">Offering home care services for senior citizens, including medical support, companionship, and other services for elderly people living alone.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Elder Care India')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="elderly">
+                        <img src="https://images.unsplash.com/photo-1609252285236-93406ce15b0d?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Samarthanam Trust for the Disabled" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Samarthanam Trust for the Disabled</h3>
+                            <p class="ngo-cause">Providing elderly care programs, including rehabilitation, medical assistance, and educational opportunities for the elderly, especially those with disabilities.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Samarthanam Trust for the Disabled')">Donate Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-section">
+        <div class="footer-content">
+            <div class="footer-column-1">
+                <div class="footer-wrapper-1">
+                    <h3 class="footer-menu-title">Menu</h3>
+                    <nav class="footer-menu-links">
+                        <a href="#">About</a><br>
+                        <a href="#">Causes</a><br>
+                        <a href="#">Services</a><br>
+                        <a href="#">Events</a>
+                    </nav>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div class="footer-logo">
+                        <span>Hope</span>
+                        <div class="footer-logo-dot"></div>
+                    </div>
+                    <p class="footer-copyright">© 2025 Hope Inc. Copyright and rights reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter NGOs based on city selection and cause
+        function filterNGOs() {
+            const city = document.getElementById('city-select').value;
+            const ngoCards = document.querySelectorAll('.ngo-card');
+
+            ngoCards.forEach(card => {
+                const cardCity = card.getAttribute('data-city');
+                const cardCause = card.getAttribute('data-cause');
+
+                if ((city === 'all' || cardCity === city) && cardCause === 'elderly') {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Redirect to donation page with selected NGO
+        function redirectToDonation(ngoName) {
+            localStorage.setItem('selectedNGO', ngoName);
+            window.location.href = 'donation.html';
+        }
+
+        // Initial filter on page load
+        filterNGOs();
+    </script>
+</body>
+</html>

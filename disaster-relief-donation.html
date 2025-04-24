@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Relief Donation - Hope</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Professional Donate Button Styles */
+        .donate-button {
+            background-color: #54bd95;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .donate-button:hover {
+            background-color: #3a8f6d;
+        }
+
+        .donate-button:active {
+            background-color: #3d8b40;
+        }
+
+        .ngo-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .ngo-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .ngo-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .ngo-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .ngo-cause {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="landing-page">
+            <nav class="nav-wrapper">
+                <div class="nav-items">
+                    <div class="logo">HOPE</div>
+                    <div class="nav-links">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="#" class="nav-link">Forum</a>
+                        <a href="#" class="nav-link">Contact us</a>
+                    </div>
+                    <div class="auth-buttons">
+                        <a href="register.html" class="auth-button register">Register</a>
+                        <a href="login.html" class="auth-button login">Login</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- NGO List Section -->
+        <section class="ngo-list-section">
+            <div class="ngo-list-wrapper">
+                <h1 class="ngo-list-title">Support Disaster Relief Efforts</h1>
+                <p class="ngo-list-description">
+                    Select a city to explore NGOs working for disaster relief in your area. 
+                    Learn about their causes, initiatives, and how you can support them.
+                </p>
+
+                <!-- City Selection Dropdown -->
+                <div class="city-selection">
+                    <label for="city-select" class="city-label">Select a City:</label>
+                    <select id="city-select" class="city-select" onchange="filterNGOs()">
+                        <option value="all">All Cities</option>
+                        <option value="mumbai">Mumbai</option>
+                        <option value="delhi">Delhi</option>
+                        <option value="kolkata">Kolkata</option>
+                        <option value="ahmedabad">Ahmedabad</option>
+                        <option value="hyderabad">Hyderabad</option>
+                    </select>
+                </div>
+
+                <!-- NGO Cards -->
+                <div class="ngo-cards" id="ngo-cards">
+                    <!-- Mumbai NGOs -->
+                    <div class="ngo-card" data-city="mumbai" data-cause="disaster-relief">
+                        <img src="https://images.unsplash.com/photo-1547683905-f686c993aae5?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Mumbai Mobile Creches" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Mumbai Mobile Creches</h3>
+                            <p class="ngo-cause">Providing emergency relief and support to children and families affected by disasters, with a special focus on migrant laborers and construction sites.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Mumbai Mobile Creches')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="disaster-relief">
+                        <img src="https://images.unsplash.com/photo-1627741145472-53cffba5d9b3?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Bombay Relief Association" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Bombay Relief Association</h3>
+                            <p class="ngo-cause">Emergency relief during natural disasters and providing long-term support to affected communities, including food, shelter, and medical care.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Bombay Relief Association')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="disaster-relief">
+                        <img src="https://plus.unsplash.com/premium_photo-1683140516842-74c378a43d76?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Goonj" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Goonj</h3>
+                            <p class="ngo-cause">Providing relief materials such as clothes, sanitary products, and basic essentials to disaster-stricken communities.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Goonj')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="disaster-relief">
+                        <img src="https://plus.unsplash.com/premium_photo-1683134050449-080429c850a4?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Tata Trusts" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Tata Trusts</h3>
+                            <p class="ngo-cause">Coordinating disaster response and relief efforts across India, including providing medical aid, food, water, and long-term rehabilitation.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Tata Trusts')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="disaster-relief">
+                        <img src="https://images.unsplash.com/flagged/photo-1552483570-019b7f8119b2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="SEEDS" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">SEEDS</h3>
+                            <p class="ngo-cause">Disaster response, preparedness, and long-term recovery, including training and rehabilitation efforts in disaster-affected areas.</p>
+                            <button class="donate-button" onclick="redirectToDonation('SEEDS')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="disaster-relief">
+                        <img src="https://images.unsplash.com/photo-1641648540657-04fa359c80cc?q=80&w=1863&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Save the Children India" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Save the Children India</h3>
+                            <p class="ngo-cause">Emergency relief during disasters, especially for children, including food, shelter, education, and healthcare support.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Save the Children India')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Delhi NGOs -->
+                    <div class="ngo-card" data-city="delhi" data-cause="disaster-relief">
+                        <img src="https://images.unsplash.com/photo-1600581808016-6fa27d8742a1?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Goonj" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Goonj</h3>
+                            <p class="ngo-cause">Addressing disaster relief through the distribution of essential materials, including clothes and sanitary products to those affected by calamities.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Goonj')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="disaster-relief">
+                        <img src="https://plus.unsplash.com/premium_photo-1681492244799-f559a49e767f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="National Disaster Management Authority (NDMA)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">National Disaster Management Authority (NDMA)</h3>
+                            <p class="ngo-cause">Coordinating and responding to national disasters, implementing strategies for disaster risk reduction and preparedness.</p>
+                            <button class="donate-button" onclick="redirectToDonation('National Disaster Management Authority (NDMA)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="disaster-relief">
+                        <img src="https://images.unsplash.com/photo-1641648540756-e9360b43b466?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Akshaya Patra Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Akshaya Patra Foundation</h3>
+                            <p class="ngo-cause">Providing emergency food relief during natural disasters and also addressing long-term rehabilitation in affected areas.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Akshaya Patra Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="disaster-relief">
+                        <img src="https://images.unsplash.com/photo-1728320771441-17a19df0fe4c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Disaster Management Institute (DMI)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Disaster Management Institute (DMI)</h3>
+                            <p class="ngo-cause">Providing disaster management training, response planning, and real-time relief operations during emergencies.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Disaster Management Institute (DMI)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="disaster-relief">
+                        <img src="https://plus.unsplash.com/premium_photo-1733317290607-6479869d275c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="HelpAge India" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">HelpAge India</h3>
+                            <p class="ngo-cause">Providing emergency relief, medical assistance, and long-term care to the elderly affected by natural disasters.</p>
+                            <button class="donate-button" onclick="redirectToDonation('HelpAge India')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="disaster-relief">
+                        <img src="https://plus.unsplash.com/premium_photo-1661962927450-d5f7c9267ca2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Oxfam India" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Oxfam India</h3>
+                            <p class="ngo-cause">Emergency relief efforts in the aftermath of disasters, including access to clean water, sanitation, and immediate shelter for vulnerable populations.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Oxfam India')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Kolkata NGOs -->
+                    <div class="ngo-card" data-city="kolkata" data-cause="disaster-relief">
+                        <img src="https://images.unsplash.com/photo-1569060368681-889a62a8f416?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pragati Welfare Society" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Pragati Welfare Society</h3>
+                            <p class="ngo-cause">Providing relief to communities affected by natural disasters in West Bengal and beyond, with a focus on rehabilitation and livelihood recovery.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Pragati Welfare Society')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="disaster-relief">
+                        <img src="https://plus.unsplash.com/premium_photo-1683135030516-6317ed744628?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Rural Reconstruction Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Rural Reconstruction Foundation</h3>
+                            <p class="ngo-cause">Disaster relief in rural areas, including providing food, water, medical aid, and rebuilding communities.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Rural Reconstruction Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="disaster-relief">
+                        <img src="https://plus.unsplash.com/premium_photo-1663047044538-399e70f24ae0?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Naba Diganta" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Naba Diganta</h3>
+                            <p class="ngo-cause">Disaster relief in West Bengal, especially in rural and coastal regions, offering food, medical care, and temporary shelter.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Naba Diganta')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="disaster-relief">
+                        <img src="https://images.unsplash.com/photo-1534862262637-373c120dcbcc?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kolkata Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Kolkata Foundation</h3>
+                            <p class="ngo-cause">Providing aid during natural calamities by supplying food, shelter, and medical relief to disaster-stricken communities.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Kolkata Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="disaster-relief">
+                        <img src="https://images.unsplash.com/photo-1567946174667-988665467d53?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="SEEDS" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">SEEDS</h3>
+                            <p class="ngo-cause">Disaster relief and preparedness, focusing on building resilient communities and providing immediate relief during calamities.</p>
+                            <button class="donate-button" onclick="redirectToDonation('SEEDS')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="disaster-relief">
+                        <img src="https://plus.unsplash.com/premium_photo-1661962402563-9ad78bf7feda?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="West Bengal Voluntary Health Association (WBVHA)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">West Bengal Voluntary Health Association (WBVHA)</h3>
+                            <p class="ngo-cause">Emergency response and relief efforts, focusing on health services and disaster management.</p>
+                            <button class="donate-button" onclick="redirectToDonation('West Bengal Voluntary Health Association (WBVHA)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Ahmedabad NGOs -->
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="disaster-relief">
+                        <img src="https://images.unsplash.com/photo-1581059729226-c493d3086748?q=80&w=1718&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Gujarat Disaster Management Authority (GDMA)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Gujarat Disaster Management Authority (GDMA)</h3>
+                            <p class="ngo-cause">Coordinating disaster relief and preparedness activities across Gujarat, including managing response efforts and rehabilitation for affected communities.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Gujarat Disaster Management Authority (GDMA)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="disaster-relief">
+                        <img src="https://plus.unsplash.com/premium_photo-1661964155049-f8a24a60be74?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Akshaya Patra Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Akshaya Patra Foundation</h3>
+                            <p class="ngo-cause">Providing food relief in the aftermath of disasters, ensuring affected populations have access to nutritious meals.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Akshaya Patra Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="disaster-relief">
+                        <img src="https://images.unsplash.com/photo-1541710005980-7ea80ff232d6?q=80&w=1744&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="SEWA" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">SEWA</h3>
+                            <p class="ngo-cause">Disaster relief for marginalized women, providing emergency aid and support for rebuilding livelihoods post-disasters.</p>
+                            <button class="donate-button" onclick="redirectToDonation('SEWA')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="disaster-relief">
+                        <img src="https://plus.unsplash.com/premium_photo-1661962468079-5d6791f9c627?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="TARU Leading Edge" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">TARU Leading Edge</h3>
+                            <p class="ngo-cause">Providing technical assistance and management support for disaster response and recovery efforts, including early warning systems and relief logistics.</p>
+                            <button class="donate-button" onclick="redirectToDonation('TARU Leading Edge')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="disaster-relief">
+                        <img src="https://plus.unsplash.com/premium_photo-1663040178972-ee1d45d33899?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="HelpAge India" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">HelpAge India</h3>
+                            <p class="ngo-cause">Emergency response and relief for the elderly during natural disasters, ensuring their medical, shelter, and nutritional needs are met.</p>
+                            <button class="donate-button" onclick="redirectToDonation('HelpAge India')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="disaster-relief">
+                        <img src="https://images.unsplash.com/photo-1523867386632-d0107d6e79ec?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Vikram Sarabhai Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Vikram Sarabhai Foundation</h3>
+                            <p class="ngo-cause">Community-focused disaster relief operations, particularly in remote and rural areas, with an emphasis on sustainable rehabilitation.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Vikram Sarabhai Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Hyderabad NGOs -->
+                    <div class="ngo-card" data-city="hyderabad" data-cause="disaster-relief">
+                        <img src="https://images.unsplash.com/photo-1591497108596-436c1a1a5c8e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Nirmaan Organization" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Nirmaan Organization</h3>
+                            <p class="ngo-cause">Disaster response and rehabilitation, working on relief efforts such as providing medical care, shelter, and food after natural disasters.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Nirmaan Organization')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="disaster-relief">
+                        <img src="https://plus.unsplash.com/premium_photo-1661904545686-6d30f0bf72a8?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Goonj" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Goonj</h3>
+                            <p class="ngo-cause">Addressing the immediate and long-term needs of disaster-affected communities by providing essential supplies like clothes, bedding, and other materials.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Goonj')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="disaster-relief">
+                        <img src="https://images.unsplash.com/photo-1581059686229-de26e6ae5dc4?q=80&w=1744&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Rang De" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Rang De</h3>
+                            <p class="ngo-cause">Providing affordable loans to families affected by disasters, helping them rebuild their lives and livelihoods in the aftermath of calamities.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Rang De')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="disaster-relief">
+                        <img src="https://plus.unsplash.com/premium_photo-1683141173692-aba4763bce41?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Indian Red Cross Society – Andhra Pradesh & Telangana" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Indian Red Cross Society – Andhra Pradesh & Telangana</h3>
+                            <p class="ngo-cause">Emergency relief operations, including first-aid, shelter, food, and medical supplies during and after disasters.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Indian Red Cross Society – Andhra Pradesh & Telangana')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="disaster-relief">
+                        <img src="https://images.unsplash.com/photo-1559060035-572b2e659ed0?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Oxfam India" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Oxfam India</h3>
+                            <p class="ngo-cause">Disaster relief, providing humanitarian aid such as clean water, food, medical assistance, and temporary shelters for those affected by disasters.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Oxfam India')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="disaster-relief">
+                        <img src="https://plus.unsplash.com/premium_photo-1661962834814-2086d028cda1?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Srujan Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Srujan Foundation</h3>
+                            <p class="ngo-cause">Active in Hyderabad and other cities, providing immediate disaster relief in terms of medical care, food, and shelter during times of crisis.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Srujan Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-section">
+        <div class="footer-content">
+            <div class="footer-column-1">
+                <div class="footer-wrapper-1">
+                    <h3 class="footer-menu-title">Menu</h3>
+                    <nav class="footer-menu-links">
+                        <a href="#">About</a><br>
+                        <a href="#">Causes</a><br>
+                        <a href="#">Services</a><br>
+                        <a href="#">Events</a>
+                    </nav>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div class="footer-logo">
+                        <span>Hope</span>
+                        <div class="footer-logo-dot"></div>
+                    </div>
+                    <p class="footer-copyright">© 2025 Hope Inc. Copyright and rights reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter NGOs based on city selection and cause
+        function filterNGOs() {
+            const city = document.getElementById('city-select').value;
+            const ngoCards = document.querySelectorAll('.ngo-card');
+
+            ngoCards.forEach(card => {
+                const cardCity = card.getAttribute('data-city');
+                const cardCause = card.getAttribute('data-cause');
+
+                if ((city === 'all' || cardCity === city) && cardCause === 'disaster-relief') {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Redirect to donation page with selected NGO
+        function redirectToDonation(ngoName) {
+            localStorage.setItem('selectedNGO', ngoName);
+            window.location.href = 'donation.html';
+        }
+
+        // Initial filter on page load
+        filterNGOs();
+    </script>
+</body>
+</html>

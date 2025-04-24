@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Donation - Hope</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Professional Donate Button Styles */
+        .donate-button {
+            background-color: #54bd95;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .donate-button:hover {
+            background-color: #3a8f6d;
+        }
+
+        .donate-button:active {
+            background-color: #3d8b40;
+        }
+
+        .ngo-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .ngo-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .ngo-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .ngo-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .ngo-cause {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="landing-page">
+            <nav class="nav-wrapper">
+                <div class="nav-items">
+                    <div class="logo">HOPE</div>
+                    <div class="nav-links">
+                        <a href="indexnew.html" class="nav-link">Home</a>
+                        <a href="#" class="nav-link">Forum</a>
+                        <a href="#" class="nav-link">Contact us</a>
+                    </div>
+                    <div class="auth-buttons">
+                        <a href="register.html" class="auth-button register">Register</a>
+                        <a href="login.html" class="auth-button login">Login</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- NGO List Section -->
+        <section class="ngo-list-section">
+            <div class="ngo-list-wrapper">
+                <h1 class="ngo-list-title">Support Animal Welfare</h1>
+                <p class="ngo-list-description">
+                    Select a city to explore NGOs working for animal welfare in your area. 
+                    Learn about their causes, initiatives, and how you can support them.
+                </p>
+
+                <!-- City Selection Dropdown -->
+                <div class="city-selection">
+                    <label for="city-select" class="city-label">Select a City:</label>
+                    <select id="city-select" class="city-select" onchange="filterNGOs()">
+                        <option value="all">All Cities</option>
+                        <option value="mumbai">Mumbai</option>
+                        <option value="delhi">Delhi</option>
+                        <option value="kolkata">Kolkata</option>
+                        <option value="ahmedabad">Ahmedabad</option>
+                        <option value="hyderabad">Hyderabad</option>
+                    </select>
+                </div>
+
+                <!-- NGO Cards -->
+                <div class="ngo-cards" id="ngo-cards">
+                    <!-- Mumbai NGOs -->
+                    <div class="ngo-card" data-city="mumbai" data-cause="animal-welfare">
+                        <img src="https://plus.unsplash.com/premium_photo-1722054522045-debe05e966e9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Animal Aid Unlimited" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Animal Aid Unlimited</h3>
+                            <p class="ngo-cause">Rescuing and rehabilitating injured and sick animals, particularly street animals like dogs, cows, and birds, and providing long-term care and shelter.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Animal Aid Unlimited')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="animal-welfare">
+                        <img src="https://plus.unsplash.com/premium_photo-1722054521886-34b8a2a7d873?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="People for Animals (PFA) Mumbai" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">People for Animals (PFA) Mumbai</h3>
+                            <p class="ngo-cause">Promoting animal welfare through rescues, animal adoptions, spaying/neutering programs, and education on animal rights and humane treatment.</p>
+                            <button class="donate-button" onclick="redirectToDonation('People for Animals (PFA) Mumbai')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="animal-welfare">
+                        <img src="https://images.unsplash.com/photo-1547133672-497c4ba2b6ae?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Welfare of Stray Dogs (WSD)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Welfare of Stray Dogs (WSD)</h3>
+                            <p class="ngo-cause">Providing medical care, food, and shelter for stray dogs in Mumbai, along with sterilization and vaccination programs to control the stray dog population.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Welfare of Stray Dogs (WSD)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="animal-welfare">
+                        <img src="https://plus.unsplash.com/premium_photo-1722054518291-a37d532c09a3?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Animal Rescue and Care (ARC)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Animal Rescue and Care (ARC)</h3>
+                            <p class="ngo-cause">Rescuing abandoned and injured animals, providing medical care, rehabilitation, and supporting animal adoption in the city.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Animal Rescue and Care (ARC)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="animal-welfare">
+                        <img src="https://plus.unsplash.com/premium_photo-1677575243414-811da3c4d3f2?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bombay Society for the Prevention of Cruelty to Animals (BSPCA)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Bombay Society for the Prevention of Cruelty to Animals (BSPCA)</h3>
+                            <p class="ngo-cause">Providing medical treatment, shelter, and rehabilitation to injured and abused animals, as well as promoting animal welfare awareness in Mumbai.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Bombay Society for the Prevention of Cruelty to Animals (BSPCA)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="animal-welfare">
+                        <img src="https://plus.unsplash.com/premium_photo-1663133665481-35b4bf5d97c7?q=80&w=1744&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Friendicoes" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Friendicoes</h3>
+                            <p class="ngo-cause">Aimed at the rescue, care, and rehabilitation of injured and abandoned animals, especially stray dogs and cats in Mumbai.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Friendicoes')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Delhi NGOs -->
+                    <div class="ngo-card" data-city="delhi" data-cause="animal-welfare">
+                        <img src="https://plus.unsplash.com/premium_photo-1667155652558-44b36c94f079?q=80&w=1746&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="People for Animals (PFA) Delhi" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">People for Animals (PFA) Delhi</h3>
+                            <p class="ngo-cause">Operating rescue services, running shelters for abandoned and injured animals, and conducting sterilization programs for stray animals.</p>
+                            <button class="donate-button" onclick="redirectToDonation('People for Animals (PFA) Delhi')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="animal-welfare">
+                        <img src="https://plus.unsplash.com/premium_photo-1667099521719-8052e76c3cb3?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Federation of Indian Animal Protection Organisations (FIAPO)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Federation of Indian Animal Protection Organisations (FIAPO)</h3>
+                            <p class="ngo-cause">Promoting animal welfare and rights across India, advocating for animal protection laws and organizing campaigns and awareness programs.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Federation of Indian Animal Protection Organisations (FIAPO)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="animal-welfare">
+                        <img src="https://plus.unsplash.com/premium_photo-1664299141013-3d27bf4cb7e6?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Wildlife SOS" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Wildlife SOS</h3>
+                            <p class="ngo-cause">Rescuing and rehabilitating wild animals, including elephants, bears, and other wildlife, and providing long-term care for those unable to return to the wild.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Wildlife SOS')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="animal-welfare">
+                        <img src="https://images.unsplash.com/photo-1675701917791-debd2d61cc4a?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Delhi Animal Rescue (DAR)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Delhi Animal Rescue (DAR)</h3>
+                            <p class="ngo-cause">Providing shelter, medical care, and adoption services for stray and injured animals, along with spaying and neutering programs.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Delhi Animal Rescue (DAR)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="animal-welfare">
+                        <img src="https://images.unsplash.com/photo-1501286353178-1ec881214838?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Humane Society International India (HSI India)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Humane Society International India (HSI India)</h3>
+                            <p class="ngo-cause">Advocating for animal rights, providing medical assistance to animals in need, and raising awareness about animal cruelty.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Humane Society International India (HSI India)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="animal-welfare">
+                        <img src="https://plus.unsplash.com/premium_photo-1663047331652-c35ec7ff757b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sanjay Gandhi Animal Care Centre (SGACC)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Sanjay Gandhi Animal Care Centre (SGACC)</h3>
+                            <p class="ngo-cause">Offering medical treatment, rehabilitation, and shelter for stray animals in Delhi, focusing on rescuing and treating injured animals.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Sanjay Gandhi Animal Care Centre (SGACC)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Kolkata NGOs -->
+                    <div class="ngo-card" data-city="kolkata" data-cause="animal-welfare">
+                        <img src="https://plus.unsplash.com/premium_photo-1667573535846-a4670d4810e9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="People for Animals (PFA) Kolkata" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">People for Animals (PFA) Kolkata</h3>
+                            <p class="ngo-cause">Promoting animal welfare through rescue operations, veterinary care, spaying/neutering programs, and educating the public about responsible pet ownership.</p>
+                            <button class="donate-button" onclick="redirectToDonation('People for Animals (PFA) Kolkata')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="animal-welfare">
+                        <img src="https://plus.unsplash.com/premium_photo-1681882984485-97dba2458845?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Calcutta Animal Rescue (CAR)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Calcutta Animal Rescue (CAR)</h3>
+                            <p class="ngo-cause">Providing rescue, treatment, and shelter for injured and abandoned animals, with a special emphasis on sterilization programs for stray animals.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Calcutta Animal Rescue (CAR)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="animal-welfare">
+                        <img src="https://images.unsplash.com/photo-1549113013-0950f57fcf78?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Animal Rescue and Welfare Organisation (ARWO)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Animal Rescue and Welfare Organisation (ARWO)</h3>
+                            <p class="ngo-cause">Rescuing injured animals, providing medical aid, shelter, and rehabilitation, and running awareness programs about animal rights.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Animal Rescue and Welfare Organisation (ARWO)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="animal-welfare">
+                        <img src="https://images.unsplash.com/photo-1630580868273-ca354a448832?q=80&w=1690&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Peta India (People for the Ethical Treatment of Animals)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Peta India (People for the Ethical Treatment of Animals)</h3>
+                            <p class="ngo-cause">Advocating for the ethical treatment of animals through campaigns, educational programs, and promoting veganism to reduce animal suffering.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Peta India (People for the Ethical Treatment of Animals)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="animal-welfare">
+                        <img src="https://plus.unsplash.com/premium_photo-1722054522739-ae2be648a177?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kolkata Society for the Prevention of Cruelty to Animals (KSPCA)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Kolkata Society for the Prevention of Cruelty to Animals (KSPCA)</h3>
+                            <p class="ngo-cause">Providing shelter, rescue, and medical care for abused or abandoned animals, and running awareness programs on cruelty-free treatment of animals.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Kolkata Society for the Prevention of Cruelty to Animals (KSPCA)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="animal-welfare">
+                        <img src="https://plus.unsplash.com/premium_photo-1664297547495-dae7e2fdd9e1?q=80&w=1796&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Compassionate Crusaders Trust" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Compassionate Crusaders Trust</h3>
+                            <p class="ngo-cause">Rescuing and rehabilitating stray and injured animals, organizing spaying and neutering programs, and raising awareness about animal rights.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Compassionate Crusaders Trust')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Ahmedabad NGOs -->
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="animal-welfare">
+                        <img src="https://images.unsplash.com/photo-1602864061469-7c39d003d566?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Gujarat Society for Prevention of Cruelty to Animals (GSPCA)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Gujarat Society for Prevention of Cruelty to Animals (GSPCA)</h3>
+                            <p class="ngo-cause">Providing medical care, rescue services, shelter, and adoption programs for stray animals, and promoting animal welfare through legal advocacy.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Gujarat Society for Prevention of Cruelty to Animals (GSPCA)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="animal-welfare">
+                        <img src="https://images.unsplash.com/photo-1657536724271-141b94f9900f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Animal Aid Unlimited" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Animal Aid Unlimited</h3>
+                            <p class="ngo-cause">Rescuing and rehabilitating animals in need, providing medical care, shelter, and long-term rehabilitation for injured and sick animals.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Animal Aid Unlimited')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="animal-welfare">
+                        <img src="https://images.unsplash.com/photo-1627309984836-677328ab9085?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Shrimad Rajchandra Animal Welfare Trust" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Shrimad Rajchandra Animal Welfare Trust</h3>
+                            <p class="ngo-cause">Providing rescue and rehabilitation services for animals, including medical care, shelter, and adoption facilities for stray animals.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Shrimad Rajchandra Animal Welfare Trust')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="animal-welfare">
+                        <img src="https://plus.unsplash.com/premium_photo-1677165799454-65a1a253e4d3?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Jivdaya Charitable Trust" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Jivdaya Charitable Trust</h3>
+                            <p class="ngo-cause">Aiding the rescue and treatment of sick and injured animals, running a shelter for animals, and conducting education and awareness programs on animal welfare.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Jivdaya Charitable Trust')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="animal-welfare">
+                        <img src="https://plus.unsplash.com/premium_photo-1722054522154-c9a1780dd657?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="PETA India (People for the Ethical Treatment of Animals)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">PETA India (People for the Ethical Treatment of Animals)</h3>
+                            <p class="ngo-cause">Running campaigns to stop cruelty to animals, conducting awareness programs, and advocating for the ethical treatment of animals.</p>
+                            <button class="donate-button" onclick="redirectToDonation('PETA India (People for the Ethical Treatment of Animals)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="animal-welfare">
+                        <img src="https://plus.unsplash.com/premium_photo-1723622429467-0ba746897e62?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Ark Animal Care" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Ark Animal Care</h3>
+                            <p class="ngo-cause">Rescuing and rehabilitating stray and injured animals, providing medical care, shelter, and promoting responsible pet ownership.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Ark Animal Care')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Hyderabad NGOs -->
+                    <div class="ngo-card" data-city="hyderabad" data-cause="animal-welfare">
+                        <img src="https://plus.unsplash.com/premium_photo-1664303250257-d7e16d1b6050?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Hyderabad Society for the Prevention of Cruelty to Animals (HSPCA)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Hyderabad Society for the Prevention of Cruelty to Animals (HSPCA)</h3>
+                            <p class="ngo-cause">Rescuing and treating sick, injured, or abandoned animals, promoting responsible pet ownership, and running awareness programs for animal welfare.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Hyderabad Society for the Prevention of Cruelty to Animals (HSPCA)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="animal-welfare">
+                        <img src="https://plus.unsplash.com/premium_photo-1681843797073-0b6b3e5b9cbd?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Friends of Animals" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Friends of Animals</h3>
+                            <p class="ngo-cause">Providing rescue services, shelter, medical treatment, and adoption services for stray and abandoned animals in Hyderabad.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Friends of Animals')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="animal-welfare">
+                        <img src="https://plus.unsplash.com/premium_photo-1663040127439-559556054fe8?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Animal Rescue Organisation (ARO)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Animal Rescue Organisation (ARO)</h3>
+                            <p class="ngo-cause">Rescuing animals in distress, providing medical treatment, and running awareness campaigns about animal rights and responsible pet care.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Animal Rescue Organisation (ARO)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="animal-welfare">
+                        <img src="https://images.unsplash.com/photo-1540126034813-121bf29033d2?q=80&w=1744&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kalamandir Animal Care" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Kalamandir Animal Care</h3>
+                            <p class="ngo-cause">Treating injured and sick animals, offering shelter services, and promoting animal welfare through education and campaigns.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Kalamandir Animal Care')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="animal-welfare">
+                        <img src="https://plus.unsplash.com/premium_photo-1661849793437-70a6f9564372?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sarathi Animal Care and Rescue" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Sarathi Animal Care and Rescue</h3>
+                            <p class="ngo-cause">Offering emergency animal rescue services, providing shelter and medical treatment for animals, and organizing spaying and neutering programs.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Sarathi Animal Care and Rescue')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="animal-welfare">
+                        <img src="https://plus.unsplash.com/premium_photo-1673641895481-6a5c45c5d613?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="VSPCA (Visakha Society for Protection and Care of Animals)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">VSPCA (Visakha Society for Protection and Care of Animals)</h3>
+                            <p class="ngo-cause">Providing rescue and medical care to animals in distress, focusing on sterilization, adoption, and the promotion of animal welfare across the region.</p>
+                            <button class="donate-button" onclick="redirectToDonation('VSPCA (Visakha Society for Protection and Care of Animals)')">Donate Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-section">
+        <div class="footer-content">
+            <div class="footer-column-1">
+                <div class="footer-wrapper-1">
+                    <h3 class="footer-menu-title">Menu</h3>
+                    <nav class="footer-menu-links">
+                        <a href="#">About</a><br>
+                        <a href="#">Causes</a><br>
+                        <a href="#">Services</a><br>
+                        <a href="#">Events</a>
+                    </nav>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div class="footer-logo">
+                        <span>Hope</span>
+                        <div class="footer-logo-dot"></div>
+                    </div>
+                    <p class="footer-copyright">© 2025 Hope Inc. Copyright and rights reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter NGOs based on city selection and cause
+        function filterNGOs() {
+            const city = document.getElementById('city-select').value;
+            const ngoCards = document.querySelectorAll('.ngo-card');
+
+            ngoCards.forEach(card => {
+                const cardCity = card.getAttribute('data-city');
+                const cardCause = card.getAttribute('data-cause');
+
+                if ((city === 'all' || cardCity === city) && cardCause === 'animal-welfare') {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Redirect to donation page with selected NGO
+        function redirectToDonation(ngoName) {
+            localStorage.setItem('selectedNGO', ngoName);
+            window.location.href = 'donation.html';
+        }
+
+        // Initial filter on page load
+        filterNGOs();
+    </script>
+</body>
+</html>

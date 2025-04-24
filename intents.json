@@ -1,0 +1,304 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "hello",
+        "hii","hi","hiii",
+        "hey",
+        "good morning",
+        "good evening",
+        "how are you?"
+      ],
+      "responses": [
+        "Hello! 👋 Welcome to HOPE. How can I assist you today?",
+        "Hey there! 😊 Ready to make a difference? Let me know how I can help.",
+        "Hi! 💙 Looking to donate or learn more? I'm here for you."
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "bye",
+        "goodbye",
+        "see you",
+        "thanks, bye",
+        "talk to you later"
+      ],
+      "responses": [
+        "Goodbye! 💙 Thank you for being part of HOPE. Come back anytime!",
+        "See you soon! 😊 Remember, every act of kindness counts.",
+        "Thanks for visiting HOPE! If you need help, just say ‘Hi!’ anytime."
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "thanks",
+        "thank you",
+        "appreciate it",
+        "thanks a lot"
+      ],
+      "responses": [
+        "You're welcome! 😊 We're always here to help.",
+        "Anytime! 💙 Let me know if you need anything else.",
+        "Glad I could help! Keep spreading kindness. ✨"
+      ]
+    },
+    {
+      "tag": "donation_process",
+      "patterns": [
+        "how do I donate?",
+        "what's the process for donating?",
+        "how can I give money?",
+        "steps to donate",
+        "how to start donating?",
+        "how to donate?", "explain the process", "how is the donation done"
+      ],
+      "responses": [
+        "Donating is simple! Follow these steps:\n1️⃣ **Browse our causes** and pick one that inspires you.\n2️⃣ **Choose a verified NGO** you want to support.\n3️⃣ **Decide how to contribute** – monetary donation or material donation.\n4️⃣ **Fill in your details** and select a secure payment method.\n5️⃣ **Receive confirmation & impact updates** on how your donation is helping!"
+      ]
+    },
+    {
+      "tag": "donation_amount",
+      "patterns": [
+        "how much should I donate?",
+        "what is the minimum donation?",
+        "how much money is needed?",
+        "suggested donation amount"
+      ],
+      "responses": [
+        "Every donation counts! 💙 You can donate any amount, but most donors contribute between ₹100-₹5000. Choose an amount that fits your budget and generosity!"
+      ]
+    },
+    {
+      "tag": "donation_security",
+      "patterns": [
+        "is my payment secure?",
+        "how do I know my money is safe?",
+        "is it safe to donate online?",
+        "do you store my payment details?"
+      ],
+      "responses": [
+        "Your security is our top priority! 🔒 We use **bank-level encryption (SSL, PCI DSS compliance)** to ensure your payments are 100% secure. Your financial details are never stored or shared."
+      ]
+    },
+    {
+      "tag": "material",
+      "patterns": [
+        "can I donate clothes?",
+        "do you accept books?",
+        "what items can I donate?",
+        "physical donation options"
+      ],
+      "responses": [
+        "Yes! 🎁 You can donate clothes, books, food, and more. Here's how it works:\n1️⃣ Share the items you want to donate.\n2️⃣ We’ll **match you with a nearby NGO** that needs them.\n3️⃣ Choose **pickup or drop-off** based on your convenience.\n4️⃣ Receive a confirmation and impact update!"
+      ]
+    },
+    {
+      "tag": "donation_transparency",
+      "patterns": [
+        "where does my donation go?",
+        "how is my money used?",
+        "do you have donation reports?",
+        "is my money being used properly?",
+        "can I track my donation?"
+      ],
+      "responses": [
+        "We believe in complete transparency! 💙 Your donation goes directly to the NGO you choose. You'll receive an update on how it’s making an impact. Visit our [Transparency Page] for reports."
+      ]
+    },
+    {
+      "tag": "first_time_donor",
+      "patterns": [
+        "this is my first time donating",
+        "I've never donated before",
+        "I'm new to this",
+        "how does donating work?",
+        "I'm unsure about donating"
+      ],
+      "responses": [
+        "That’s amazing! 🎉 Taking the first step to donate is a big deal, and we're here to help. 💙 You can start small, and we’ll guide you through every step. What would you like to know?"
+      ]
+    },
+    {
+      "tag": "payment_methods",
+      "patterns": [
+        "what payment methods do you accept?",
+        "how can I pay?",
+        "can I use UPI?",
+        "do you accept PayPal?"
+      ],
+      "responses": [
+        "We accept multiple payment methods for your convenience! 💳 You can pay via **Credit/Debit Card, UPI, PayPal, Net Banking, and Wallets.** Choose what works best for you!"
+      ]
+    },
+    {
+      "tag": "fundraising",
+      "patterns": [
+        "can I start a fundraiser?",
+        "how do I raise money for a cause?",
+        "I want to organize a fundraiser",
+        "how can I help a specific person?"
+      ],
+      "responses": [
+        "Absolutely! 🌟 You can start a **fundraiser** for a cause you're passionate about. We’ll help you set up a campaign and reach donors. Visit our ‘Start a Fundraiser’ section to begin!"
+      ]
+    },
+    {
+      "tag": "help",
+      "patterns": [
+        "I need help",
+        "how can you help me?",
+        "I'm confused",
+        "support please","help"
+      ],
+      "responses": [
+        "No worries! 😊 I'm here to help. Let me know what you're looking for:\n- 💰 How to donate\n- 📢 Fundraising\n- 👕 Material donations\nJust type your question, and I'll guide you!"
+      ]
+    },
+    {
+      "tag": "fallback",
+      "patterns": [
+        "I don't understand",
+        "can you repeat that?",
+        "not sure what you mean",
+        "huh?",
+        "what?"
+      ],
+      "responses": [
+        "I didn’t quite get that 🤔. But I’d love to help! Here are some things I can assist with:\n- 📢 How to donate\n- 💰 Payment methods\n- 👕 Material donations\nJust type one of these, or ask in a different way!"
+      ]
+    },
+    {
+      "tag": "cities",
+      "patterns": [
+        "which cities do you operate in?",
+        "is this available in Mumbai?",
+        "can I donate from Delhi?",
+        "is there service in Bangalore?",
+        "NGOs in my city",
+        "do you support Kolkata?",
+        "cities"
+      ],
+      "responses": [
+        "Yes! 🏙️ We currently support donations in major cities like **Mumbai, Delhi, Bangalore, Chennai, Hyderabad, Pune, Kolkata, and Ahmedabad**. More locations are coming soon! 💙"
+      ]
+    },
+    {
+      "tag": "ngo_partnership",
+      "patterns": [
+        "I'm from an NGO",
+        "how can my NGO join?",
+        "partnership with HOPE",
+        "register NGO",
+        "collaborate with HOPE"
+      ],
+      "responses": [
+        "We’d love to collaborate! 🤝 NGOs can join HOPE by registering through our 'Join as NGO' page. Once verified, you can receive donations, volunteers, and visibility through our platform. 💙"
+      ]
+    },
+    {
+      "tag": "cause_types",
+      "patterns": [
+        "what causes do you support?",
+        "types of donations",
+        "which areas can I donate to?",
+        "do you support education?",
+        "do you help children or elderly?",
+        "causes?"
+      ],
+      "responses": [
+        "We support a wide range of causes! 🌍 You can donate to:\n- 📚 Education\n- 🍲 Hunger relief\n- 👵 Elderly care\n- 🧒 Child welfare\n- 🐾 Animal rescue\n- 🌱 Environment\nJust pick a cause that speaks to your heart!"
+      ]
+    },
+    {
+      "tag": "tax_benefits",
+      "patterns": [
+        "do I get tax benefit?",
+        "tax exemption on donation",
+        "can I claim tax for this?",
+        "donation receipt for tax"
+      ],
+      "responses": [
+        "Yes! 🎉 Donations to eligible NGOs are **tax-deductible under Section 80G**. You’ll receive a receipt which you can use to claim deductions when filing taxes. 💼"
+      ]
+    },
+    {
+      "tag": "contact_support",
+      "patterns": [
+        "how do I contact you?",
+        "need help from support",
+        "customer service",
+        "support team contact"
+      ],
+      "responses": [
+        "You can reach out to our support team 📞 via:\n- Email: support@hope.org\n- Phone: +91-9876543210\n- Or use the live chat option on our website. We’re always here to help 💙"
+      ]
+    },
+    {
+      "tag": "cancel_donation",
+      "patterns": [
+        "can I cancel my donation?",
+        "how to stop donation?",
+        "I want to cancel payment",
+        "donation refund"
+      ],
+      "responses": [
+        "We understand! 🙏 For cancellations or refunds, please contact our support team within 24 hours of the donation. 📧 Email: support@hope.org"
+      ]
+    },
+    {
+      "tag": "language_support",
+      "patterns": [
+        "can I use Hindi?",
+        "is this available in Marathi?",
+        "multi-language support?",
+        "available in regional language?"
+      ],
+      "responses": [
+        "We currently support English, and we're working to include more regional languages like हिंदी, मराठी, বাংলা soon! 🌐 Stay tuned!"
+      ]
+    },
+    {
+      "tag": "forgot_password",
+      "patterns": [
+        "I forgot my password",
+        "reset my password",
+        "can’t login",
+        "trouble signing in"
+      ],
+      "responses": [
+        "No worries! 🔐 Click on ‘Forgot Password’ on the login page and follow the steps to reset it. Need help? Contact support anytime!"
+      ]
+    },
+    {
+      "tag": "ngo_verification",
+      "patterns": [
+        "are your NGOs verified?",
+        "how do you verify NGOs?",
+        "are these NGOs legit?",
+        "fake NGOs protection?"
+      ],
+      "responses": [
+        "We ensure all listed NGOs are **verified through registration documents, impact checks, and past performance**. ✅ Transparency and trust are key at HOPE!"
+      ]
+    },
+    {
+      "tag": "ngo_list",
+      "patterns": [
+        "which NGOs do you work with?",
+        "list of supported NGOs",
+        "what are the partner NGOs?",
+        "NGOs available to donate"
+      ],
+      "responses": [
+        "We partner with several verified NGOs across India 🏢. You can view the list while choosing a cause or visit our NGO directory for details."
+      ]
+    }
+    
+  
+    
+  ]
+  
+}

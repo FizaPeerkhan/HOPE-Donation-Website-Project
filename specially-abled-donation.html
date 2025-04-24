@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specially-Abled Donation - Hope</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Professional Donate Button Styles */
+        .donate-button {
+            background-color: #54bd95;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .donate-button:hover {
+            background-color: #3a8f6d;
+        }
+
+        .donate-button:active {
+            background-color: #3d8b40;
+        }
+
+        .ngo-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .ngo-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .ngo-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .ngo-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .ngo-cause {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="landing-page">
+            <nav class="nav-wrapper">
+                <div class="nav-items">
+                    <div class="logo">HOPE</div>
+                    <div class="nav-links">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="#" class="nav-link">Forum</a>
+                        <a href="#" class="nav-link">Contact us</a>
+                    </div>
+                    <div class="auth-buttons">
+                        <a href="register.html" class="auth-button register">Register</a>
+                        <a href="login.html" class="auth-button login">Login</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- NGO List Section -->
+        <section class="ngo-list-section">
+            <div class="ngo-list-wrapper">
+                <h1 class="ngo-list-title">Support Specially-Abled Individuals</h1>
+                <p class="ngo-list-description">
+                    Select a city to explore NGOs working for the specially-abled in your area. 
+                    Learn about their causes, initiatives, and how you can support them.
+                </p>
+
+                <!-- City Selection Dropdown -->
+                <div class="city-selection">
+                    <label for="city-select" class="city-label">Select a City:</label>
+                    <select id="city-select" class="city-select" onchange="filterNGOs()">
+                        <option value="all">All Cities</option>
+                        <option value="mumbai">Mumbai</option>
+                        <option value="delhi">Delhi</option>
+                        <option value="kolkata">Kolkata</option>
+                        <option value="ahmedabad">Ahmedabad</option>
+                        <option value="hyderabad">Hyderabad</option>
+                    </select>
+                </div>
+
+                <!-- NGO Cards -->
+                <div class="ngo-cards" id="ngo-cards">
+                    <!-- Mumbai NGOs -->
+                    <div class="ngo-card" data-city="mumbai" data-cause="specially-abled">
+                        <img src="https://plus.unsplash.com/premium_photo-1726869773020-674b9f72a46f?q=80&w=1728&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Aditya Mehta Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Aditya Mehta Foundation</h3>
+                            <p class="ngo-cause">Empowering and supporting people with disabilities, particularly through sports, rehabilitation, and employment opportunities.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Aditya Mehta Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="specially-abled">
+                        <img src="https://plus.unsplash.com/premium_photo-1661413277751-2aaefed19ae4?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The National Association for the Blind (NAB)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The National Association for the Blind (NAB)</h3>
+                            <p class="ngo-cause">Providing education, vocational training, and rehabilitation services for blind and visually impaired individuals.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The National Association for the Blind (NAB)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="specially-abled">
+                        <img src="https://plus.unsplash.com/premium_photo-1663126705437-11691d54313b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="V-Excel Educational Trust" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">V-Excel Educational Trust</h3>
+                            <p class="ngo-cause">Providing special education, therapy, and training for children with developmental disabilities like autism, ADHD, and learning disabilities.</p>
+                            <button class="donate-button" onclick="redirectToDonation('V-Excel Educational Trust')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="specially-abled">
+                        <img src="https://plus.unsplash.com/premium_photo-1723514492763-863460f5fc70?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kiran Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Kiran Foundation</h3>
+                            <p class="ngo-cause">Offering special education and vocational training for children with various disabilities, promoting inclusion, and improving quality of life.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Kiran Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="specially-abled">
+                        <img src="https://plus.unsplash.com/premium_photo-1723708918995-7171bbcfc005?q=80&w=1710&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Light of Life Trust" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Light of Life Trust</h3>
+                            <p class="ngo-cause">Helping differently-abled individuals, especially those from underprivileged backgrounds, by providing educational and rehabilitation support.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Light of Life Trust')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="mumbai" data-cause="specially-abled">
+                        <img src="https://plus.unsplash.com/premium_photo-1723601018883-10f52b0bed45?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Enable India" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Enable India</h3>
+                            <p class="ngo-cause">Empowering people with disabilities through skill development, employment training, and creating inclusive workplaces.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Enable India')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Delhi NGOs -->
+                    <div class="ngo-card" data-city="delhi" data-cause="specially-abled">
+                        <img src="https://plus.unsplash.com/premium_photo-1663051221583-a992cf7c4f81?q=80&w=1806&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sightsavers India" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Sightsavers India</h3>
+                            <p class="ngo-cause">Empowering blind and visually impaired individuals through education, employment, and healthcare support, along with advocacy for disability rights.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Sightsavers India')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="specially-abled">
+                        <img src="https://plus.unsplash.com/premium_photo-1664302157055-2f73bd85343c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="AADI (Action for Ability Development and Inclusion)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">AADI (Action for Ability Development and Inclusion)</h3>
+                            <p class="ngo-cause">Providing educational, therapeutic, and recreational support for children and adults with disabilities, including special needs education.</p>
+                            <button class="donate-button" onclick="redirectToDonation('AADI (Action for Ability Development and Inclusion)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="specially-abled">
+                        <img src="https://plus.unsplash.com/premium_photo-1663090648951-07b3f21c8886?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Blind Relief Association" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Blind Relief Association</h3>
+                            <p class="ngo-cause">Education, training, and rehabilitation for visually impaired individuals, ensuring their inclusion and equal opportunities in society.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Blind Relief Association')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="specially-abled">
+                        <img src="https://plus.unsplash.com/premium_photo-1664302212173-9e82a10dccbb?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Divya Kala Mander" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Divya Kala Mander</h3>
+                            <p class="ngo-cause">Promoting the skills and abilities of children with disabilities through specialized education, art, and cultural programs.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Divya Kala Mander')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="specially-abled">
+                        <img src="https://plus.unsplash.com/premium_photo-1723809617648-c42abc84dea4?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Association for the Welfare of the Handicapped (AWH)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Association for the Welfare of the Handicapped (AWH)</h3>
+                            <p class="ngo-cause">Providing physical therapy, education, vocational training, and rehabilitation services to people with various disabilities.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Association for the Welfare of the Handicapped (AWH)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="delhi" data-cause="specially-abled">
+                        <img src="https://plus.unsplash.com/premium_photo-1733306523337-79adf90cd640?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Spastics Society of Delhi" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Spastics Society of Delhi</h3>
+                            <p class="ngo-cause">Empowering children with cerebral palsy and other disabilities through specialized education, therapy, and vocational training programs.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Spastics Society of Delhi')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Kolkata NGOs -->
+                    <div class="ngo-card" data-city="kolkata" data-cause="specially-abled">
+                        <img src="https://plus.unsplash.com/premium_photo-1723867235355-b2384f0267d3?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Society for the Welfare of the Deaf (SWD)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Society for the Welfare of the Deaf (SWD)</h3>
+                            <p class="ngo-cause">Providing education, vocational training, and empowerment programs for the deaf community, promoting inclusion in mainstream society.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Society for the Welfare of the Deaf (SWD)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="specially-abled">
+                        <img src="https://plus.unsplash.com/premium_photo-1726880541758-16c50de57308?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bengal Council for the Disabled" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Bengal Council for the Disabled</h3>
+                            <p class="ngo-cause">Providing various services including education, skill development, and rehabilitation for differently-abled people across Kolkata and West Bengal.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Bengal Council for the Disabled')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="specially-abled">
+                        <img src="https://plus.unsplash.com/premium_photo-1716637059700-da01221bdc06?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Rashi Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Rashi Foundation</h3>
+                            <p class="ngo-cause">Empowering children with special needs, including those with autism and intellectual disabilities, through education and vocational training.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Rashi Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="specially-abled">
+                        <img src="https://plus.unsplash.com/premium_photo-1661331695989-aaaf30ac3e11?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Anjali (Kolkata)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Anjali (Kolkata)</h3>
+                            <p class="ngo-cause">Offering educational and recreational services for children with mental disabilities, promoting inclusion and awareness in society.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Anjali (Kolkata)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="specially-abled">
+                        <img src="https://plus.unsplash.com/premium_photo-1718201868099-bec662ee3c26?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Parivar (Kolkata)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Parivar (Kolkata)</h3>
+                            <p class="ngo-cause">Providing care, support, and rehabilitation services for children with disabilities and their families, with an emphasis on education and therapy.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Parivar (Kolkata)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="kolkata" data-cause="specially-abled">
+                        <img src="https://plus.unsplash.com/premium_photo-1723802431752-d5ae79c14b95?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pallium India" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Pallium India</h3>
+                            <p class="ngo-cause">Supporting people with disabilities, especially those with life-limiting conditions, by providing palliative care, therapy, and support services.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Pallium India')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Ahmedabad NGOs -->
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="specially-abled">
+                        <img src="https://images.unsplash.com/photo-1498578726655-4a7188d5b17c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Samvedna Senior Care" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Samvedna Senior Care</h3>
+                            <p class="ngo-cause">Providing care and services for specially-abled senior citizens, particularly those with physical and cognitive disabilities.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Samvedna Senior Care')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="specially-abled">
+                        <img src="https://images.unsplash.com/photo-1632646332908-fcfd19d736e5?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Gujarat State Handicapped Welfare Federation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Gujarat State Handicapped Welfare Federation</h3>
+                            <p class="ngo-cause">Supporting people with disabilities by providing vocational training, rehabilitation, and advocating for their rights.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Gujarat State Handicapped Welfare Federation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="specially-abled">
+                        <img src="https://plus.unsplash.com/premium_photo-1718201868848-ca4875faf100?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Shree Sankalp Charitable Trust" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Shree Sankalp Charitable Trust</h3>
+                            <p class="ngo-cause">Offering educational programs, healthcare, and rehabilitation for children with special needs and disabilities.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Shree Sankalp Charitable Trust')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="specially-abled">
+                        <img src="https://images.unsplash.com/photo-1631882304106-a9e8df712e58?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Association for Disabled People (ADP)" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Association for Disabled People (ADP)</h3>
+                            <p class="ngo-cause">Working towards the education, welfare, and vocational training of differently-abled individuals in Ahmedabad.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Association for Disabled People (ADP)')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="specially-abled">
+                        <img src="https://plus.unsplash.com/premium_photo-1726804877798-b1645411476e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Divyang Empowerment Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Divyang Empowerment Foundation</h3>
+                            <p class="ngo-cause">Providing vocational training, employment opportunities, and skill development for people with disabilities to help them lead independent lives.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Divyang Empowerment Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="ahmedabad" data-cause="specially-abled">
+                        <img src="https://plus.unsplash.com/premium_photo-1716637059620-35c045a92178?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sankalp Charitable Trust" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Sankalp Charitable Trust</h3>
+                            <p class="ngo-cause">Providing therapy, educational resources, and support for children with disabilities, focusing on inclusive learning environments.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Sankalp Charitable Trust')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Hyderabad NGOs -->
+                    <div class="ngo-card" data-city="hyderabad" data-cause="specially-abled">
+                        <img src="https://plus.unsplash.com/premium_photo-1716637062885-eadb447dba60?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Spastics Society of Telangana" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">The Spastics Society of Telangana</h3>
+                            <p class="ngo-cause">Empowering children with developmental disabilities, especially cerebral palsy, through therapy, education, and vocational training.</p>
+                            <button class="donate-button" onclick="redirectToDonation('The Spastics Society of Telangana')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="specially-abled">
+                        <img src="https://images.unsplash.com/photo-1615506313305-e61daaa8cdcb?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sweekar - The Association of the Handicapped" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Sweekar - The Association of the Handicapped</h3>
+                            <p class="ngo-cause">Providing a wide range of services for people with disabilities, including education, medical rehabilitation, and vocational training.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Sweekar - The Association of the Handicapped')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="specially-abled">
+                        <img src="https://plus.unsplash.com/premium_photo-1661353296109-9f0401f952ed?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Nethra Vidyalaya" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Nethra Vidyalaya</h3>
+                            <p class="ngo-cause">Offering education and rehabilitation programs for children with visual impairments, promoting inclusion and equal opportunities.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Nethra Vidyalaya')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="specially-abled">
+                        <img src="https://plus.unsplash.com/premium_photo-1723579299177-ccb8021c64b7?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Anvaya Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Anvaya Foundation</h3>
+                            <p class="ngo-cause">Specializing in care and support services for children with autism, cerebral palsy, and other developmental disabilities.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Anvaya Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="specially-abled">
+                        <img src="https://images.unsplash.com/photo-1519053450113-32bed8bbf61d?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bodhi Wellness Foundation" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Bodhi Wellness Foundation</h3>
+                            <p class="ngo-cause">Providing therapy, vocational training, and holistic care for people with physical and mental disabilities.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Bodhi Wellness Foundation')">Donate Now</button>
+                        </div>
+                    </div>
+
+                    <div class="ngo-card" data-city="hyderabad" data-cause="specially-abled">
+                        <img src="https://images.unsplash.com/photo-1508847154043-be5407fcaa5a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Saksham" class="ngo-image">
+                        <div class="ngo-content">
+                            <h3 class="ngo-name">Saksham</h3>
+                            <p class="ngo-cause">Offering skills development, education, and employment services for specially-abled individuals to integrate them into mainstream society.</p>
+                            <button class="donate-button" onclick="redirectToDonation('Saksham')">Donate Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-section">
+        <div class="footer-content">
+            <div class="footer-column-1">
+                <div class="footer-wrapper-1">
+                    <h3 class="footer-menu-title">Menu</h3>
+                    <nav class="footer-menu-links">
+                        <a href="#">About</a><br>
+                        <a href="#">Causes</a><br>
+                        <a href="#">Services</a><br>
+                        <a href="#">Events</a>
+                    </nav>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div class="footer-logo">
+                        <span>Hope</span>
+                        <div class="footer-logo-dot"></div>
+                    </div>
+                    <p class="footer-copyright">© 2025 Hope Inc. Copyright and rights reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter NGOs based on city selection and cause
+        function filterNGOs() {
+            const city = document.getElementById('city-select').value;
+            const ngoCards = document.querySelectorAll('.ngo-card');
+
+            ngoCards.forEach(card => {
+                const cardCity = card.getAttribute('data-city');
+                const cardCause = card.getAttribute('data-cause');
+
+                if ((city === 'all' || cardCity === city) && cardCause === 'specially-abled') {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Redirect to donation page with selected NGO
+        function redirectToDonation(ngoName) {
+            localStorage.setItem('selectedNGO', ngoName);
+            window.location.href = 'donation.html';
+        }
+
+        // Initial filter on page load
+        filterNGOs();
+    </script>
+</body>
+</html>

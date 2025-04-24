@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGO Dashboard - Hope</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            background-color: #f5faf8;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Main Content */
+        .dashboard-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-title {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .dashboard-title span {
+            color: #54bd95;
+        }
+
+        .dashboard-subtitle {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        /* Form Styles */
+        .form-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .form-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #54bd95;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #555;
+            font-size: 14px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #54bd95;
+            box-shadow: 0 0 0 2px rgba(84, 189, 149, 0.2);
+            outline: none;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: #54bd95;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            background-color: #3a8f6d;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .nav-items {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .auth-buttons {
+                margin-top: 1rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-wrapper">
+            <div class="nav-items">
+                <div class="logo">HOPE</div>
+                <div class="nav-links">
+                    <a href="indexnew.html" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">Forum</a>
+                    <a href="#" class="nav-link">Contact us</a>
+                </div>
+                <div class="auth-buttons">
+                    <a href="login.html" class="auth-button login">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="dashboard-container">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">NGO <span>Dashboard</span></h1>
+                <p class="dashboard-subtitle">Submit your urgent needs to connect with potential donors</p>
+            </div>
+            
+            <div class="form-card">
+                <h2 class="form-title">Request Assistance</h2>
+                <form id="ngo-needs-form">
+                    <div class="form-group">
+                        <label for="ngo-name">NGO Name</label>
+                        <input type="text" id="ngo-name" name="ngo-name" placeholder="Enter your NGO name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" name="location" placeholder="City, Country" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cause">Category</label>
+                        <select id="cause" name="cause" required>
+                            <option value="" disabled selected>Select a category</option>
+                            <option value="Education">Education</option>
+                            <option value="Children">Children</option>
+                            <option value="Food">Food Security</option>
+                            <option value="Women">Women's Rights</option>
+                            <option value="Disaster Relief">Disaster Relief</option>
+                            <option value="Specially Abled">Disability Support</option>
+                            <option value="Elderly">Elderly Care</option>
+                            <option value="Medical Needs">Medical Assistance</option>
+                            <option value="Animals">Animal Welfare</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="item-name">Item/Service Needed</label>
+                        <input type="text" id="item-name" name="item-name" placeholder="What do you need?" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="quantity">Quantity Needed</label>
+                        <input type="number" id="quantity" name="quantity" placeholder="How many?" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="urgency">Urgency Level</label>
+                        <select id="urgency" name="urgency" required>
+                            <option value="" disabled selected>How urgent is this need?</option>
+                            <option value="Low">Low (can wait 2+ weeks)</option>
+                            <option value="Medium">Medium (needed within 2 weeks)</option>
+                            <option value="High">High (needed within 1 week)</option>
+                            <option value="Urgent">Urgent (needed within 48 hours)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description">Detailed Description</label>
+                        <textarea id="description" name="description" placeholder="Please describe your need in detail, including how it will be used and who will benefit..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact">Contact Email</label>
+                        <input type="email" id="contact" name="contact" placeholder="contact@yourngo.org" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+1234567890">
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Submit Request
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-section">
+        <div class="footer-content">
+            <div class="footer-column-1">
+                <div class="footer-wrapper-1">
+                    <h3 class="footer-menu-title">Menu</h3>
+                    <nav class="footer-menu-links">
+                        About<br>
+                        Causes<br>
+                        Services<br>
+                        Events
+                    </nav>
+                    <div class="social-icons">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f328ca805879574c401999cb42f44c670a3006ed52e7a50af8543c923023ac60?placeholderIfAbsent=true&apiKey=96cef265759849c4ad3bb1dc4b9cb445" alt="Social icon 1" class="social-icon" loading="lazy">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/825f4830acef626439aab45e8ad05c578bd70e7e2082a839b4aeeedd02f16568?placeholderIfAbsent=true&apiKey=96cef265759849c4ad3bb1dc4b9cb445" alt="Social icon 2" class="social-icon" loading="lazy">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/888ffa44548d076780e899a9f2fcd5f92ee3e3c2c1357730afbed098b16fd322?placeholderIfAbsent=true&apiKey=96cef265759849c4ad3bb1dc4b9cb445" alt="Social icon 3" class="social-icon" loading="lazy">
+                    </div>
+                    <div class="footer-logo">
+                        <span>Hope</span>
+                        <div class="footer-logo-dot"></div>
+                    </div>
+                    <p class="footer-copyright">© 2025 Hope Inc. Copyright and rights reserved</p>
+                </div>
+            </div>
+            <div class="footer-column-2">
+                <div class="footer-wrapper-2">
+                    <form class="contact-form">
+                        <h3 class="form-title">Have A Question</h3>
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" aria-label="Enter your email">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" name="message" class="form-textarea" placeholder="What are you saying?" aria-label="What are you saying?"></textarea>
+                        <button type="submit" class="form-submit">Send Question</button>
+                    </form>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Terms and Conditions</a>
+                        <a href="#" class="footer-link">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('ngo-needs-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const formData = {
+                id: Date.now(),
+                ngo: document.getElementById('ngo-name').value,
+                location: document.getElementById('location').value,
+                title: document.getElementById('item-name').value,
+                description: document.getElementById('description').value,
+                quantity: document.getElementById('quantity').value,
+                category: document.getElementById('cause').value,
+                priority: document.getElementById('urgency').value,
+                contact: document.getElementById('contact').value,
+                phone: document.getElementById('phone').value,
+                posted: new Date().toLocaleString()
+            };
+            
+            // Get existing needs or create empty array
+            let urgentNeeds = JSON.parse(localStorage.getItem('urgentNeeds')) || [];
+            
+            // Add new need to beginning
+            urgentNeeds.unshift(formData);
+            
+            // Save back to localStorage
+            localStorage.setItem('urgentNeeds', JSON.stringify(urgentNeeds));
+            
+            // Redirect to confirmation page
+            window.location.href = 'confirmation.html';
+        });
+    </script>
+</body>
+</html>
